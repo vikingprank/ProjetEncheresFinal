@@ -7,7 +7,7 @@
 <title>Ajouter un article</title>
 </head>
 <h1>Formulaire de mis en vente d'un article</h1>
-<form action="">
+<form action="ajoutArticle" method="POST">
 
 <label for="nomArticle">Nom de l'article :</label>
 <input type="text" id="nomArticle" name="nomArticle"><br>
@@ -22,7 +22,7 @@
 <input type="date" id="dateFinEncheres" name="dateFinEncheres"><br>
 
 <label for="prixInitial">Prix Initial :</label>
-<input type="number" id="description" name="description"><br>
+<input type="number" id="description" name="prixInitial"><br>
 
 <select id="noCategorie" name="noCategorie">
     <option value="">--Choisisez une catégorie--</option>
@@ -39,7 +39,7 @@
 
 </form>
 
-<a href="accueil"><input type="button" value="annuler"></a>
+<a href="../accueil"><input type="button" value="annuler"></a>
 
 
 <body>

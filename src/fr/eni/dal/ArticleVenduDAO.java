@@ -13,7 +13,7 @@ public class ArticleVenduDAO {
 		Connection cnx;
 		try {
 			cnx = ConnectionProvider.getConnection();
-			PreparedStatement pstmt = cnx.prepareStatement("INSERT INTO ArticlesVendus(nomArticle, description, dateDebutEncheres, dateFinEncheres, prixInitial, noUtilisateur, noCategorie) VALUES (?,?,?,?,?,?,?)");
+			PreparedStatement pstmt = cnx.prepareStatement("INSERT INTO ARTICLES_VENDUS(nomArticle, description, dateDebutEncheres, dateFinEncheres, prixInitial, noUtilisateur, noCategorie) VALUES (?,?,?,?,?,?,?)");
 			pstmt.setString(1, article.getNomArticle());
 			pstmt.setString(2, article.getDescription());
 			pstmt.setDate(3, Date.valueOf(article.getDateDebutEncheres()));

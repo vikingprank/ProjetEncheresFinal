@@ -40,12 +40,13 @@ public class AjoutArticle extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("ces");
 		String nomArticle = request.getParameter("nomArticle");
 		String description = request.getParameter("description");
 		LocalDate dateDebutEncheres = LocalDate.parse(request.getParameter("dateDebutEncheres"));
 		LocalDate dateFinEncheres = LocalDate.parse(request.getParameter("dateFinEncheres"));
-		int prixInitial = Integer.parseInt(request.getParameter("prixInitial"));
-		int noCategorie = Integer.parseInt(request.getParameter("noCategorie"));
+		int prixInitial = Integer.valueOf(request.getParameter("prixInitial"));
+		int noCategorie = Integer.valueOf(request.getParameter("noCategorie"));
 		
 		Utilisateur utilisateurRecupNum = new Utilisateur();
 		utilisateurRecupNum = (Utilisateur) request.getSession().getAttribute("utilisateurConnecte");
@@ -56,7 +57,7 @@ public class AjoutArticle extends HttpServlet {
 		System.out.println(article);
 		articleVenduManager.ajouterArticle(article);
 		
-		request.getServletContext().getRequestDispatcher("/WEB-INF/gestionEncheres/accueil.jsp").forward(request, response);
+		request.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
 	}
 
 }
