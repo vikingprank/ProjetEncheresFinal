@@ -24,8 +24,19 @@
 <label for="prixInitial">Prix Initial :</label>
 <input type="number" id="description" name="description"><br>
 
-<label for="categorie">Prix Initial :</label>
+<label for="noCategorie">Prix Initial :</label>
 <input type="text" id="categorie" name="categorie"><br>
+
+<select id="categorie" name="categorie">
+    <option value="">--Choisisez une catégorie--</option>
+    <option value="1">1-Informatique</option>
+    <option value="2">2-Ameublement</option>
+    <option value="3">3-Vêtements</option>
+    <option value="4">4-Sports et Loisirs</option>
+</select>
+
+
+
 
 <input type="submit" value="publier l'annonce">
 
