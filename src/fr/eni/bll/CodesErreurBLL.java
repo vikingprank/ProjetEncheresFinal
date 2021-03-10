@@ -23,4 +23,8 @@ public abstract class CodesErreurBLL {
 	public static final int PSEUDO_EXISTANT=30001;
 	
 	public static final int EMAIL_EXISTANT=30002;
+	
+	public static final int ARTICLES_EN_VENTE=30003;
+	
+	
 }

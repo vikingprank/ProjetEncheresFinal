@@ -14,7 +14,7 @@
 		
 		<input type="submit" value="Valider la suppresion du compte"> 
 		
-		<a href="index"><input type="button" value="annuler"></a>
+		<a href="accueil"><input type="button" value="annuler"></a>
 
 	</form>
 </body>

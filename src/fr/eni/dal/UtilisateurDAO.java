@@ -154,7 +154,7 @@ public class UtilisateurDAO {
 		return utilisateur;
 	}
 
-	public void suppresionUtilisateur(int noUtilisateur) {
+	public void suppresionUtilisateur(int noUtilisateur) throws BusinessException {
 		Connection cnx;
 		try {
 			cnx = ConnectionProvider.getConnection();
@@ -163,8 +163,13 @@ public class UtilisateurDAO {
 			pstmt.executeUpdate();
 			cnx.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			BusinessException businessException = new BusinessException();
+			if(e.getMessage().contains("encheres_utilisateur_fk"))
+			{
+				businessException.ajouterErreur(CodesErreurBLL.ARTICLES_EN_VENTE);
+			}
+			throw businessException;
 		}
 		
 		

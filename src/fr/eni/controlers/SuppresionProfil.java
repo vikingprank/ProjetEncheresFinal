@@ -1,6 +1,7 @@
 package fr.eni.controlers;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,11 +37,16 @@ public class SuppresionProfil extends HttpServlet {
 		
 		
 		UtilisateurManager utilisateurManager = new UtilisateurManager();
-		utilisateurManager.suppresionUtilisateur(noUtilisateur);
+		try {
+			utilisateurManager.suppresionUtilisateur(noUtilisateur);
+			request.getSession().invalidate();
+			request.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
+		} catch (BusinessException e) {
+
+			request.setAttribute("listeCodesErreur", e.getListeCodesErreur());
+			request.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
+		}
 		
-		request.getSession().invalidate();
-		
-		request.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
 	}
 
 }

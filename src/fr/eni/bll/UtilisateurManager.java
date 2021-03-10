@@ -103,7 +103,7 @@ public class UtilisateurManager {
 		}
 	}
 
-	public void suppresionUtilisateur(int noUtilisateur) {
+	public void suppresionUtilisateur(int noUtilisateur) throws BusinessException {
 				
 		DAOFactory.getUtilisateurDAO().suppresionUtilisateur(noUtilisateur);
 	}
