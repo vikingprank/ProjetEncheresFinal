@@ -16,7 +16,7 @@
 				<li><a href="inscription">Inscription</a></li>
 				<li><a href="connexion">Connexion</a></li>
 				<li><a href="modificationProfil">Modification du Profil</a></li>
-
+				<li><a href="suppresionProfil">Suppresion du Profil</a></li>
 			</ul>
 		</nav>
 	</header>

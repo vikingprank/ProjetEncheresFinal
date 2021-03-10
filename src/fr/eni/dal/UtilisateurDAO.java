@@ -153,5 +153,21 @@ public class UtilisateurDAO {
 		}
 		return utilisateur;
 	}
+
+	public void suppresionUtilisateur(int noUtilisateur) {
+		Connection cnx;
+		try {
+			cnx = ConnectionProvider.getConnection();
+			PreparedStatement pstmt = cnx.prepareStatement("DELETE Utilisateurs WHERE noUtilisateur=?");
+			pstmt.setInt(1, noUtilisateur);
+			pstmt.executeUpdate();
+			cnx.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
 }
 

@@ -102,4 +102,9 @@ public class UtilisateurManager {
 			exception.ajouterErreur(CodesErreurBLL.RULE_AUTHENTIFICATION);
 		}
 	}
+
+	public void suppresionUtilisateur(int noUtilisateur) {
+				
+		DAOFactory.getUtilisateurDAO().suppresionUtilisateur(noUtilisateur);
+	}
 }
