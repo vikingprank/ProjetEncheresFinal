@@ -11,12 +11,13 @@ import fr.eni.dal.DAOFactory;
 import fr.eni.dal.UtilisateurDAO;
 
 public class UtilisateurManager {
-	
-	public Utilisateur modificationUtilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone, String rue,
-			String codePostal, String ville, String motDePasse, String motDePasseBis, int credit, int administrateur) throws BusinessException {
+
+	public Utilisateur modificationUtilisateur(int noUtilisateur, String pseudo, String nom, String prenom,
+			String email, String telephone, String rue, String codePostal, String ville, String motDePasse,
+			String motDePasseBis, int credit, int administrateur) throws BusinessException {
 		BusinessException exception = new BusinessException();
-		Utilisateur utilisateur = new Utilisateur(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal, ville,
-				motDePasse, credit, administrateur);
+		Utilisateur utilisateur = new Utilisateur(noUtilisateur, pseudo, nom, prenom, email, telephone, rue, codePostal,
+				ville, motDePasse, credit, administrateur);
 
 		validerPseudo(pseudo, exception);
 		validermotDePasse(motDePasse, motDePasseBis, exception);
@@ -34,13 +35,17 @@ public class UtilisateurManager {
 	public Utilisateur connexion(String login, String motDePasse) throws BusinessException {
 		BusinessException exception = new BusinessException();
 		Utilisateur utilisateur = DAOFactory.getUtilisateurDAO().selectByPseudoOrEmail(login);
-		
-		
-		
-		
-		
-		return utilisateur;
+		validerLogin(login, utilisateur.getPseudo(), utilisateur.getEmail(), exception);
+		validermotDePasseConnexion(motDePasse, utilisateur.getMotDePasse(), exception);
+		if (!exception.hasErreurs()) {
+			return utilisateur;
 		}
+		if (exception.hasErreurs()) {
+			throw exception;
+		}
+
+		return utilisateur = null;
+	}
 
 	public Utilisateur ajouter(String pseudo, String nom, String prenom, String email, String telephone, String rue,
 			String codePostal, String ville, String motDePasse, String motDePasseBis, int credit, int administrateur)
@@ -76,8 +81,25 @@ public class UtilisateurManager {
 	}
 
 	private void validermotDePasse(String motDePasse, String motDePasseBis, BusinessException exception) {
+		if (motDePasse.isEmpty()) 
+			exception.ajouterErreur(CodesErreurBLL.RULE_PASSWORD_AND_CONFIRMATION_ERREUR);
 		if (!(motDePasse.equals(motDePasseBis))) {
 			exception.ajouterErreur(CodesErreurBLL.RULE_PASSWORD_AND_CONFIRMATION_ERREUR);
+		}
+	}
+
+	private void validermotDePasseConnexion(String motDePasse, String motDePasseBis, BusinessException exception) {
+		if (!(motDePasse.equals(motDePasseBis))) {
+			exception.ajouterErreur(CodesErreurBLL.RULE_AUTHENTIFICATION);
+		}
+	}
+
+	private void validerLogin(String login, String pseudo, String email, BusinessException exception) {
+		if (login.isEmpty()) {
+			exception.ajouterErreur(CodesErreurBLL.RULE_AUTHENTIFICATION);
+		}
+		if (!(login.equals(pseudo) || login.equals(email))) {
+			exception.ajouterErreur(CodesErreurBLL.RULE_AUTHENTIFICATION);
 		}
 	}
 }

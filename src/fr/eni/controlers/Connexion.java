@@ -49,13 +49,12 @@ public class Connexion extends HttpServlet {
 			Utilisateur utilisateur = new Utilisateur();
 			utilisateur = utilisateurManager.connexion(login, motDePasse);
 			session.setAttribute("utilisateurConnecte", utilisateur);
-			System.out.println(utilisateur);
+			request.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
 			
 		} catch (BusinessException e) {
-			e.printStackTrace();
+			request.setAttribute("listeCodesErreur", e.getListeCodesErreur());
+			request.getServletContext().getRequestDispatcher("/WEB-INF/connexion.jsp").forward(request, response);
 		}
-		
-		request.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
 	}
 
 }

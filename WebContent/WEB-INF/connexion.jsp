@@ -24,12 +24,11 @@
 
 
 	<c:if test="${fn:length(listeCodesErreur) > 0}">
-		<p style="color: red;">Erreur, l'inscription a echoué :</p>
+		<p style="color: red;">Erreur, la connexion a echoué :</p>
 		<c:forEach items="${ listeCodesErreur }" var="messageErreur">
 				${LecteurMessage.getMessageErreur(messageErreur)} <br>
 		</c:forEach>
 	</c:if>
-	<c:if test="${succesInscription == true }">L'inscription à été réalisé avec succès</c:if>
 
 	<form action="connexion" method="post">
 		<label for="pseudo">Pseudo :</label> <input type="text" id="pseudo"
@@ -39,9 +38,6 @@
 		<input type="submit" value="se connecter">
 	</form>
 	
-	<c:if test= "${ !empty pseudo }" >
-		<p> ${ utilisateurConnecte.pseudo } dans la session </p>
-	</c:if>
 	
 	<form action="deconnexion" method="post">
 		<input type="submit" value="deconnexion" />

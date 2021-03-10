@@ -32,7 +32,7 @@
 			</c:forEach>
 	</c:if>
 	
-	<c:if test="${utilisateurConnecte != 0}">
+	<c:if test="${!empty utilisateur}">
 	Inscription realisée avec succes !
 	</c:if>
 	

@@ -21,8 +21,8 @@
 		</nav>
 	</header>
 	
-	<c:if test= "${ !empty pseudo }" >
-		<p> ${ utilisateurConnecte.pseudo } dans la session </p>
+	<c:if test= "${ !empty utilisateurConnecte }" >
+		<p> ${ utilisateurConnecte.pseudo } connecté a la session </p>
 	</c:if>
 	<form action="/deconnexion"method="post">
 		<input type="submit" value="deconnexion" />
