@@ -17,6 +17,7 @@
 				<li><a href="connexion">Connexion</a></li>
 				<li><a href="modificationProfil">Modification du Profil</a></li>
 				<li><a href="suppresionProfil">Suppresion du Profil</a></li>
+				<li><a href="gestionEncheres/ajoutArticle">Ajouter un article</a></li>
 			</ul>
 		</nav>
 	</header>

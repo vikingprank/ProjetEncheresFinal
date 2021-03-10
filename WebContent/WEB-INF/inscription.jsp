@@ -70,7 +70,7 @@
     <input type="submit" value="s'inscrire">
 
     </form>
-    <a href="index"><input type="button" value="annuler"></a>
+    <a href="accueil"><input type="button" value="annuler"></a>
     
 </body>
 </html>
