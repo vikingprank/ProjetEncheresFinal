@@ -1,6 +1,8 @@
 package fr.eni.controlers;
 
 import java.io.IOException;
+import java.time.LocalDate;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.bll.ArticleVenduManager;
+import fr.eni.bo.ArticleVendu;
+import fr.eni.bo.Utilisateur;
 
 /**
  * Servlet implementation class AjoutArticle
@@ -38,13 +42,21 @@ public class AjoutArticle extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nomArticle = request.getParameter("nomArticle");
 		String description = request.getParameter("description");
-		String dateDebutEncheres = request.getParameter("dateDebutEncheres");
-		String dateFinEncheres = request.getParameter("dateFinEncheres");
-		String prixInitial = request.getParameter("prixInitial");
-		String categorie = request.getParameter("categorie");
+		LocalDate dateDebutEncheres = LocalDate.parse(request.getParameter("dateDebutEncheres"));
+		LocalDate dateFinEncheres = LocalDate.parse(request.getParameter("dateFinEncheres"));
+		int prixInitial = Integer.parseInt(request.getParameter("prixInitial"));
+		int noCategorie = Integer.parseInt(request.getParameter("noCategorie"));
 		
-		ArticleVenduManager article = new ArticleVenduManager();
+		Utilisateur utilisateurRecupNum = new Utilisateur();
+		utilisateurRecupNum = (Utilisateur) request.getSession().getAttribute("utilisateurConnecte");
+		int noUtilisateur = utilisateurRecupNum.getNoUtilisateur();
 		
+		ArticleVendu article = new ArticleVendu(nomArticle, description, dateDebutEncheres, dateFinEncheres, prixInitial, noUtilisateur, noCategorie);
+		ArticleVenduManager articleVenduManager = new ArticleVenduManager();
+		System.out.println(article);
+		articleVenduManager.ajouterArticle(article);
+		
+		request.getServletContext().getRequestDispatcher("/WEB-INF/gestionEncheres/accueil.jsp").forward(request, response);
 	}
 
 }

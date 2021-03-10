@@ -15,19 +15,16 @@
 <label for="description">Description :</label>
 <input type="text" id="description" name="description"><br>
 
-<label for="dateDebutEncheres">Date du Debut des Encheres :</label>
+<label for="dateDebutEncheres">Date de Debut des Encheres :</label>
 <input type="date" id="dateDebutEncheres" name="dateDebutEncheres"><br>
 
-<label for="dateFinEncheres">Description :</label>
+<label for="dateFinEncheres">Date de Fin des Encheres :</label>
 <input type="date" id="dateFinEncheres" name="dateFinEncheres"><br>
 
 <label for="prixInitial">Prix Initial :</label>
 <input type="number" id="description" name="description"><br>
 
-<label for="noCategorie">Prix Initial :</label>
-<input type="text" id="categorie" name="categorie"><br>
-
-<select id="categorie" name="categorie">
+<select id="noCategorie" name="noCategorie">
     <option value="">--Choisisez une catégorie--</option>
     <option value="1">1-Informatique</option>
     <option value="2">2-Ameublement</option>
