@@ -132,7 +132,8 @@ public class UtilisateurDAO {
 					+ "rue=?,"
 					+ "codePostal=?,"
 					+ "ville=?,"
-					+ "motDePasse=? ");
+					+ "motDePasse=? "
+					+ "WHERE noUtilisateur=?");
 			pstmt.setString(1, utilisateur.getPseudo());
 	        pstmt.setString(2, utilisateur.getNom());
 	        pstmt.setString(3, utilisateur.getPrenom());
@@ -142,6 +143,8 @@ public class UtilisateurDAO {
 	        pstmt.setString(7, utilisateur.getCodePostal());
 	        pstmt.setString(8, utilisateur.getVille());
 	        pstmt.setString(9, utilisateur.getMotDePasse());
+	        pstmt.setInt(10, utilisateur.getNoUtilisateur());
+	        
 	        pstmt.executeUpdate();
 			cnx.close();
 			return utilisateur;

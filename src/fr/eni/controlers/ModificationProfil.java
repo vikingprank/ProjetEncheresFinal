@@ -30,7 +30,10 @@ public class ModificationProfil extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int noUtilisateur = (int) request.getSession().getAttribute("utilisateurConnecte.noUtilisateur");
+		Utilisateur utilisateurRecupNum = new Utilisateur();
+		utilisateurRecupNum = (Utilisateur) request.getSession().getAttribute("utilisateurConnecte");
+		int noUtilisateur = utilisateurRecupNum.getNoUtilisateur();
+		System.out.println(noUtilisateur);
 		String pseudo = request.getParameter("pseudo");
 		String nom = request.getParameter("nom");
 		String prenom = request.getParameter("prenom");
