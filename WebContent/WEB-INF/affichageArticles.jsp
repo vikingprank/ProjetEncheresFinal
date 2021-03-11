@@ -36,8 +36,9 @@
 	<td>${article.noUtilisateur}</td>
 	<td>${article.noCategorie}</td>
 	<td>${article.nomUtilisateur}</td>
-	
+
 	</tr>
+	
 </c:forEach>
 
 </tr>

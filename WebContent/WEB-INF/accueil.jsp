@@ -21,7 +21,7 @@
 	</c:if>
 
 	<c:if test="${ !empty utilisateurConnecte }">
-		<p>${ utilisateurConnecte.pseudo }connecté a la session</p>
+		<p>${ utilisateurConnecte.pseudo }connectéa la session</p>
 		<form action="deconnexion" method="get">
 			<input type="submit" value="deconnexion" />
 		</form>
@@ -30,13 +30,36 @@
 		<label for="nomArticle">Nom de l'article :</label> <input type="text"
 			id="nomArticle" name="nomArticle"><br> <select
 			id="noCategorie" name="noCategorie">
-			<option value="">--Choisisez une catégorie--</option>
+			<option value="0">--Choisisez une catégorie--</option>
 			<option value="1">Informatique</option>
 			<option value="2">Ameublement</option>
 			<option value="3">Vêtements</option>
 			<option value="4">Sports et Loisirs</option>
-		</select>
-		<input type="submit" value="valider" />
+		</select> <input type="submit" value="valider" />
 	</form>
+
+
+	<c:if test="${fn:length(listeArticleRecherche) > 0}">
+		<table border="1">
+			<tr>
+
+				<th>nomArticle</th>
+				<th>dateFinEncheres</th>
+				<th>prixInitial</th>
+				<th>nomUtilisateur</th>
+
+				<c:forEach items="${listeArticleRecherche}" var="article">
+					<tr>
+						<td>${article.nomArticle}</td>
+						<td>${article.dateFinEncheres}</td>
+						<td>${article.prixInitial}</td>
+						<td>${article.nomUtilisateur}</td>
+
+					</tr>
+				</c:forEach>
+
+			</tr>
+		</table>
+	</c:if>
 </body>
 </html>

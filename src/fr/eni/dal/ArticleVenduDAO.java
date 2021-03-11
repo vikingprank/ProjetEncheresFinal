@@ -13,6 +13,8 @@ import fr.eni.bo.ArticleVendu;
 
 public class ArticleVenduDAO {
 	private static final String SELECT_ARTICLE_CATEG_AND_NOM = "SELECT * From ARTICLES_VENDUS WHERE nomArticle=? and noCategorie=?";
+	private static final String SELECT_ARTICLE__NOM = "SELECT * From ARTICLES_VENDUS WHERE nomArticle=?";
+	private static final String SELECT_ARTICLE_CATEG = "SELECT * From ARTICLES_VENDUS WHERE noCategorie=?";
 	public ArticleVendu ajouterArticle(ArticleVendu article) {
 
 		Connection cnx;
@@ -38,20 +40,32 @@ public class ArticleVenduDAO {
 		return article;
 	}
 
-	public ArticleVendu selectArticle(ArticleVendu articleRecherche) {
+	public List<ArticleVendu> selectArticle(ArticleVendu articleRecherche, int index) {
 		List<ArticleVendu> articleTrouves = new ArrayList<>();
+		System.out.println("article=" + articleRecherche + "  index=" + index);
 		try {
 		Connection cnx = ConnectionProvider.getConnection();
-		PreparedStatement pstmt = cnx.prepareStatement(SELECT_ARTICLE_CATEG_AND_NOM);
-		pstmt.setString(1, articleRecherche.getNomArticle());
-		pstmt.setInt(2, articleRecherche.getNoCategorie());
+		PreparedStatement pstmt = null;
+		if(index == 0) {
+			pstmt = cnx.prepareStatement(SELECT_ARTICLE_CATEG_AND_NOM);
+			pstmt.setString(1, articleRecherche.getNomArticle());
+			pstmt.setInt(2, articleRecherche.getNoCategorie());
+		}
+		if(index == 2) {
+			pstmt = cnx.prepareStatement(SELECT_ARTICLE__NOM);
+			pstmt.setString(1, articleRecherche.getNomArticle());
+		}
+		if(index == 1) {
+			pstmt = cnx.prepareStatement(SELECT_ARTICLE_CATEG);
+			pstmt.setInt(1, articleRecherche.getNoCategorie());
+		}
 		ResultSet rs = pstmt.executeQuery();
 		while(rs.next()) {
 			ArticleVendu article = new ArticleVendu();
 			article.setNomArticle(rs.getString("nomArticle"));
 			article.setPrixVente(rs.getInt("prixVente"));
-			article.setDateFinEncheres((LocalDate) rs.getObject("dateFinEncheres"));
-			article.setNoUtilisateur(rs.getInt("noUtilisateur"));
+			article.setDateFinEncheres(rs.getDate("dateFinEncheres").toLocalDate());
+			article.setNomUtilisateur(rs.getString("nomUtilisateur"));
 				
 			
 			articleTrouves.add(article);
@@ -61,7 +75,7 @@ public class ArticleVenduDAO {
 			e.printStackTrace();
 		}
 		
-		return null;
+		return articleTrouves;
 	}
 
 	public List<ArticleVendu> afficherTous() {

@@ -65,6 +65,12 @@ public class ArticleVendu {
 		this.nomUtilisateur = nomUtilisateur;
 	}
 
+	public ArticleVendu(String nomArticle, int noCategorie) {
+		super();
+		this.nomArticle = nomArticle;
+		this.noCategorie = noCategorie;
+	}
+	
 	public String getNomUtilisateur() {
 		return nomUtilisateur;
 	}
@@ -73,11 +79,7 @@ public class ArticleVendu {
 		this.nomUtilisateur = nomUtilisateur;
 	}
 
-	public ArticleVendu(String nomArticle, int noCategorie) {
-		super();
-		this.nomArticle = nomArticle;
-		this.noCategorie = noCategorie;
-	}
+	
 
 	public int getNoArticle() {
 		return noArticle;
