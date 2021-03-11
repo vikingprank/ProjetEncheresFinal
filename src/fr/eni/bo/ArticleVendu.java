@@ -150,13 +150,14 @@ public class ArticleVendu {
 	public void setNoCategorie(int noCategorie) {
 		this.noCategorie = noCategorie;
 	}
-
+	
+	
 	@Override
 	public String toString() {
 		return "ArticleVendu [noArticle=" + noArticle + ", nomArticle=" + nomArticle + ", description=" + description
 				+ ", dateDebutEncheres=" + dateDebutEncheres + ", dateFinEncheres=" + dateFinEncheres + ", prixInitial="
 				+ prixInitial + ", prixVente=" + prixVente + ", noUtilisateur=" + noUtilisateur + ", noCategorie="
-				+ noCategorie + "]";
+				+ noCategorie + ", nomUtilisateur=" + nomUtilisateur + "]";
 	}
 	
 }

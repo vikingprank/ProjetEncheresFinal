@@ -63,4 +63,33 @@ public class ArticleVenduDAO {
 		
 		return null;
 	}
+
+	public List<ArticleVendu> afficherTous() {
+		try {
+			Connection cnx = ConnectionProvider.getConnection();
+			PreparedStatement pstmt = cnx.prepareStatement("SELECT * From Articles_Vendus;");
+			ResultSet rs = null;
+			rs = pstmt.executeQuery();
+			ArticleVendu articleVendu = null;
+			List<ArticleVendu> liste = new ArrayList<ArticleVendu>();
+			while (rs.next()) {
+				articleVendu = new ArticleVendu(rs.getString("nomArticle"), 
+						rs.getString("description"),
+						rs.getDate("dateDebutEncheres").toLocalDate(),
+						rs.getDate("dateFinEncheres").toLocalDate(),
+						rs.getInt("prixInitial"),
+						rs.getInt("noUtilisateur"),
+						rs.getInt("noCategorie"),
+						rs.getString("nomUtilisateur"));
+				liste.add(articleVendu);
+			}
+			cnx.close();
+			return liste;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
