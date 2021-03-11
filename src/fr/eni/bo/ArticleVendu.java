@@ -12,6 +12,7 @@ public class ArticleVendu {
 	private int prixVente;
 	private int noUtilisateur;
 	private int noCategorie;
+	private String nomUtilisateur;
 	
 	public ArticleVendu() {
 		// TODO Auto-generated constructor stub
@@ -52,7 +53,7 @@ public class ArticleVendu {
 	 * @param noCategorie
 	 */
 	public ArticleVendu(String nomArticle, String description, LocalDate dateDebutEncheres, LocalDate dateFinEncheres,
-			int prixInitial, int noUtilisateur, int noCategorie) {
+			int prixInitial, int noUtilisateur, int noCategorie, String nomUtilisateur) {
 		super();
 		this.nomArticle = nomArticle;
 		this.description = description;
@@ -60,6 +61,21 @@ public class ArticleVendu {
 		this.dateFinEncheres = dateFinEncheres;
 		this.prixInitial = prixInitial;
 		this.noUtilisateur = noUtilisateur;
+		this.noCategorie = noCategorie;
+		this.nomUtilisateur = nomUtilisateur;
+	}
+
+	public String getNomUtilisateur() {
+		return nomUtilisateur;
+	}
+
+	public void setNomUtilisateur(String nomUtilisateur) {
+		this.nomUtilisateur = nomUtilisateur;
+	}
+
+	public ArticleVendu(String nomArticle, int noCategorie) {
+		super();
+		this.nomArticle = nomArticle;
 		this.noCategorie = noCategorie;
 	}
 
