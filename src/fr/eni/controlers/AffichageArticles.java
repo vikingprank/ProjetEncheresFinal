@@ -32,26 +32,26 @@ public class AffichageArticles extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("on est dans le doGet affichageArticles");
 		
 		ArticleVenduManager article = new ArticleVenduManager();
 		List<ArticleVendu> listeArticles = new ArrayList<ArticleVendu>();
 		listeArticles = article.afficherTous();
 		//System.out.println(listeArticles);
-		request.setAttribute("listeArticles", listeArticles);
+		request.getSession().setAttribute("listeArticles", listeArticles);
 		//le placement du request.getServlet... est important car placé en début du goGet, la table ne s'affiche pas!
 		request.getServletContext().getRequestDispatcher("/WEB-INF/affichageArticles.jsp").forward(request, response);
-		System.out.println("on est dans le doGet affichageArticles");
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("on est dans le doPost affichageArticles");
 		
-		String encherir = request.getParameter("encherir"); 
-		request.setAttribute("encherir", encherir);
-		System.out.println(encherir);
 		request.getServletContext().getRequestDispatcher("/WEB-INF/encherir.jsp").forward(request, response);
+		
 	}
 
 }

@@ -84,10 +84,5 @@ public class Inscription extends HttpServlet {
 			request.setAttribute("listeCodesErreur", e.getListeCodesErreur());
 		}
 		request.getServletContext().getRequestDispatcher("/WEB-INF/inscription.jsp").forward(request, response);
-		// IL FAUT CREER LA CLASSE UtilisateurManager
-
-		// redirection vers la page de connexion
-		// request.getServletContext().getRequestDispatcher("/WEB-INF/connexion.jsp").forward(request,
-		// response);
 	}
 }

@@ -17,6 +17,7 @@
 <table border="1">
 <tr>
 
+<th>noArticle</th>
 <th>nomArticle</th>
 <th>description</th>
 <th>dateDebutEncheres</th>
@@ -25,10 +26,12 @@
 <th>noUtilisateur</th>
 <th>noCategorie</th>
 <th>nomUtilisateur</th>
+<th>action</th>
 
-<c:forEach items="${requestScope.listeArticles}" var="article">
+<c:forEach items="${sessionScope.listeArticles}" var="article">
 
 	<tr>
+	<td>${article.noArticle}</td>
 	<td>${article.nomArticle}</td>
 	<td>${article.description}</td>
 	<td>${article.dateDebutEncheres}</td>
@@ -37,12 +40,7 @@
 	<td>${article.noUtilisateur}</td>
 	<td>${article.noCategorie}</td>
 	<td>${article.nomUtilisateur}</td>
-
-
-
-	<td><form action="affichageArticles" method="post">
-	<button name="encherir" value="${article}">encherir</button>
-	
+	<td><form action="encherir" method="get"><button name="noArticleAEncherir" value="${article.noArticle}">encherir</button>
 	</form></td>
 	</tr>
 	

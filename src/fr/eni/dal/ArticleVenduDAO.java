@@ -87,7 +87,8 @@ public class ArticleVenduDAO {
 			ArticleVendu articleVendu = null;
 			List<ArticleVendu> liste = new ArrayList<ArticleVendu>();
 			while (rs.next()) {
-				articleVendu = new ArticleVendu(rs.getString("nomArticle"), 
+				articleVendu = new ArticleVendu(rs.getInt("noArticle"),
+						rs.getString("nomArticle"), 
 						rs.getString("description"),
 						rs.getDate("dateDebutEncheres").toLocalDate(),
 						rs.getDate("dateFinEncheres").toLocalDate(),

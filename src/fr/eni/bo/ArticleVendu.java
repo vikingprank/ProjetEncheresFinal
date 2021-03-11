@@ -29,6 +29,7 @@ public class ArticleVendu {
 	 * @param noUtilisateur
 	 * @param noCategorie
 	 */
+	//constructeur avec noArticle mais sans nomUtilisateur
 	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
 			LocalDate dateFinEncheres, int prixInitial, int prixVente, int noUtilisateur, int noCategorie) {
 		super();
@@ -42,7 +43,20 @@ public class ArticleVendu {
 		this.noUtilisateur = noUtilisateur;
 		this.noCategorie = noCategorie;
 	}
-	
+	//constructeur avec tout sauf prix de vente
+	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
+			LocalDate dateFinEncheres, int prixInitial, int noUtilisateur, int noCategorie, String nomUtilisateur) {
+		super();
+		this.noArticle = noArticle;
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.dateDebutEncheres = dateDebutEncheres;
+		this.dateFinEncheres = dateFinEncheres;
+		this.prixInitial = prixInitial;
+		this.noUtilisateur = noUtilisateur;
+		this.noCategorie = noCategorie;
+		this.nomUtilisateur = nomUtilisateur;
+	}
 	/**
 	 * @param nomArticle
 	 * @param description
@@ -52,6 +66,7 @@ public class ArticleVendu {
 	 * @param noUtilisateur
 	 * @param noCategorie
 	 */
+	//constructeur sans noArticle
 	public ArticleVendu(String nomArticle, String description, LocalDate dateDebutEncheres, LocalDate dateFinEncheres,
 			int prixInitial, int noUtilisateur, int noCategorie, String nomUtilisateur) {
 		super();
