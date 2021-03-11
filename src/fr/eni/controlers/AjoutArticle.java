@@ -40,7 +40,7 @@ public class AjoutArticle extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("ces");
+		System.out.println("test doPost ajoutArticle");
 		String nomArticle = request.getParameter("nomArticle");
 		String description = request.getParameter("description");
 		LocalDate dateDebutEncheres = LocalDate.parse(request.getParameter("dateDebutEncheres"));
@@ -51,8 +51,9 @@ public class AjoutArticle extends HttpServlet {
 		Utilisateur utilisateurRecupNum = new Utilisateur();
 		utilisateurRecupNum = (Utilisateur) request.getSession().getAttribute("utilisateurConnecte");
 		int noUtilisateur = utilisateurRecupNum.getNoUtilisateur();
+		String nomUtilisateur = utilisateurRecupNum.getPseudo();
 		
-		ArticleVendu article = new ArticleVendu(nomArticle, description, dateDebutEncheres, dateFinEncheres, prixInitial, noUtilisateur, noCategorie);
+		ArticleVendu article = new ArticleVendu(nomArticle, description, dateDebutEncheres, dateFinEncheres, prixInitial, noUtilisateur, noCategorie, nomUtilisateur);
 		ArticleVenduManager articleVenduManager = new ArticleVenduManager();
 		System.out.println(article);
 		articleVenduManager.ajouterArticle(article);

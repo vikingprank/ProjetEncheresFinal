@@ -7,6 +7,11 @@
 <title>Suppresion du Profil</title>
 </head>
 <body>
+<header>
+		<%@include file="menu.html"%>
+	</header>
+
+
 	<h1>Suppresion du Profil</h1>
 	<h2>êtes vous sur de vouloir supprimer votre profil?</h2>
 	

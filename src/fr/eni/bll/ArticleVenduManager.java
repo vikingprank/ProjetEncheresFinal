@@ -1,5 +1,8 @@
 package fr.eni.bll;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.eni.bo.ArticleVendu;
 import fr.eni.dal.ArticleVenduDAO;
 
@@ -12,5 +15,14 @@ public class ArticleVenduManager {
 		
 		return article;
 		
+	}
+
+	public List<ArticleVendu> afficherTous() {
+		ArticleVenduDAO articleVenduDAO = new ArticleVenduDAO();
+		List<ArticleVendu> listeArticles = new ArrayList<ArticleVendu>();
+
+		listeArticles = articleVenduDAO.afficherTous();
+		
+		return listeArticles;
 	}
 }

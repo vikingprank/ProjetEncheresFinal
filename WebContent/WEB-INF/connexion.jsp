@@ -12,14 +12,9 @@
 <body>
 <body>
 	<header>
-		<nav>
-			<ul>
-				<li><a href="accueil">Accueil</a></li>
-				<li><a href="connexion">Connexion</a></li>
-				<li><a href="inscription">Inscription</a></li>
-			</ul>
-		</nav>
+		<%@include file="menu.html"%>
 	</header>
+	
 	<h1>Formulaire de Connexion</h1>
 
 

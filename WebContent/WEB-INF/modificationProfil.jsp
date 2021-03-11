@@ -8,16 +8,9 @@
 </head>
 <body>
 <header>
-		<nav>
-			<ul>
-				<li><a href="accueil">Accueil</a></li>
-				<li><a href="inscription">Inscription</a></li>
-				<li><a href="connexion">Connexion</a></li>
-				<li><a href="modificationProfil">Modification du Profil</a></li>
-				
-			</ul>
-		</nav>
+		<%@include file="menu.html"%>
 	</header>
+	
 	<h1>Modification de votre profil</h1>
 	<form action="modificationProfil" method="post">
     <label for="pseudo">Pseudo :</label>

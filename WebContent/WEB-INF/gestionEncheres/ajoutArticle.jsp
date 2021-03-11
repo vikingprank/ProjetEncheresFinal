@@ -6,6 +6,10 @@
 <meta charset="UTF-8">
 <title>Ajouter un article</title>
 </head>
+<body>
+<header>
+		<%@include file="../menu.html"%>
+</header>
 <h1>Formulaire de mis en vente d'un article</h1>
 <form action="ajoutArticle" method="POST">
 
@@ -40,9 +44,6 @@
 </form>
 
 <a href="../accueil"><input type="button" value="annuler"></a>
-
-
-<body>
 
 </body>
 </html>
