@@ -26,7 +26,7 @@
 <input type="date" id="dateFinEncheres" name="dateFinEncheres"><br>
 
 <label for="prixInitial">Prix Initial :</label>
-<input type="number" id="description" name="prixInitial"><br>
+<input type="number" id="prixInitial" name="prixInitial"><br>
 
 <select id="noCategorie" name="noCategorie">
     <option value="">--Choisisez une catégorie--</option>

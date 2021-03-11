@@ -27,6 +27,7 @@
 <th>nomUtilisateur</th>
 
 <c:forEach items="${requestScope.listeArticles}" var="article">
+
 	<tr>
 	<td>${article.nomArticle}</td>
 	<td>${article.description}</td>
@@ -36,8 +37,13 @@
 	<td>${article.noUtilisateur}</td>
 	<td>${article.noCategorie}</td>
 	<td>${article.nomUtilisateur}</td>
+	<td><form action="affichageArticles" method="post">
+	<button name="encherir" value="${article}">encherir</button>
+	
+	</form></td>
 	
 	</tr>
+	
 </c:forEach>
 
 </tr>
