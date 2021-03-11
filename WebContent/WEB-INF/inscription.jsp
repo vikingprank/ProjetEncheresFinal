@@ -12,7 +12,7 @@
 </head>
 <body>
 	<header>
-		<%@include file="menu.html"%>
+		<%@include file="menu.jsp"%>
 	</header>
 	
 	<c:if test="${fn:length(listeCodesErreur) > 0}">

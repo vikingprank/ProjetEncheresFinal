@@ -8,7 +8,7 @@
 </head>
 <body>
 <header>
-		<%@include file="../menu.html"%>
+		<%@include file="menu.jsp"%>
 </header>
 <h1>Formulaire de mis en vente d'un article</h1>
 <form action="ajoutArticle" method="POST">

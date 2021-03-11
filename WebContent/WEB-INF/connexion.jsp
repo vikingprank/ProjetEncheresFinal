@@ -12,7 +12,7 @@
 <body>
 <body>
 	<header>
-		<%@include file="menu.html"%>
+		<%@include file="menu.jsp"%>
 	</header>
 	
 	<h1>Formulaire de Connexion</h1>

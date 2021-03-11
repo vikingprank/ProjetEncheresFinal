@@ -16,7 +16,7 @@ import fr.eni.bo.Utilisateur;
 /**
  * Servlet implementation class AjoutArticle
  */
-@WebServlet("/gestionEncheres/ajoutArticle")
+@WebServlet("/ajoutArticle")
 public class AjoutArticle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,7 +33,7 @@ public class AjoutArticle extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getServletContext().getRequestDispatcher("/WEB-INF/gestionEncheres/ajoutArticle.jsp").forward(request, response);
+		request.getServletContext().getRequestDispatcher("/WEB-INF/ajoutArticle.jsp").forward(request, response);
 	}
 
 	/**

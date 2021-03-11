@@ -10,7 +10,7 @@
 <body>
 
 <header>
-		<%@include file="../menu.html"%>
+		<%@include file="menu.jsp"%>
 </header>
 
 <h1>Affichage des Articles : </h1>

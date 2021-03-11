@@ -8,7 +8,7 @@
 </head>
 <body>
 <header>
-		<%@include file="menu.html"%>
+		<%@include file="menu.jsp"%>
 	</header>
 	
 	<h1>Modification de votre profil</h1>

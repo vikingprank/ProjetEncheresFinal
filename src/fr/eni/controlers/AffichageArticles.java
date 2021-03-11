@@ -16,7 +16,7 @@ import fr.eni.bo.ArticleVendu;
 /**
  * Servlet implementation class AjoutArticle
  */
-@WebServlet("/gestionEncheres/affichageArticles")
+@WebServlet("/affichageArticles")
 public class AffichageArticles extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -39,7 +39,7 @@ public class AffichageArticles extends HttpServlet {
 		System.out.println(listeArticles);
 		request.setAttribute("listeArticles", listeArticles);
 		//le placement du request.getServlet... est important car placé en début du goGet, la table ne s'affiche pas!
-		request.getServletContext().getRequestDispatcher("/WEB-INF/gestionEncheres/affichageArticles.jsp").forward(request, response);
+		request.getServletContext().getRequestDispatcher("/WEB-INF/affichageArticles.jsp").forward(request, response);
 	}
 
 	/**
