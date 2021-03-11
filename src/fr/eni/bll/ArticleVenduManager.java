@@ -13,4 +13,13 @@ public class ArticleVenduManager {
 		return article;
 		
 	}
+	
+	public ArticleVendu rechercheArticle(ArticleVendu articleRecherche) {
+		ArticleVenduDAO articleVenduDAO = new ArticleVenduDAO();
+		if(articleRecherche.getNoCategorie() != 0 && articleRecherche.getNomArticle() != null)
+		{
+			articleRecherche = articleVenduDAO.selectArticle(articleRecherche);
+		}
+		return articleRecherche;
+	}
 }
