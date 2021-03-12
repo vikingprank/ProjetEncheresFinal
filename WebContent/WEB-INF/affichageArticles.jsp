@@ -40,7 +40,7 @@
 	<td>${article.noUtilisateur}</td>
 	<td>${article.noCategorie}</td>
 	<td>${article.nomUtilisateur}</td>
-	<td><form action="encherir" method="get"><button name="noArticleAEncherir" value="${article.noArticle}">encherir</button>
+	<td><form action="encherir" method="get"><button name="noArticleAEncherir" value="${article.noArticle}">encherir (doit être connecté)</button>
 	</form></td>
 	</tr>
 	

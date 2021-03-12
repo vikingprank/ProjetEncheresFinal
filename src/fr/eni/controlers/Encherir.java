@@ -75,8 +75,10 @@ public class Encherir extends HttpServlet {
 		enchere = enchereManager.insertEnchere(noUtilisateur, noArticle, dateEnchere, montantEnchere);
 		System.out.println("L'enchère rentrée en base de données : " + enchere);
 		
+		//mettre en session l'enchère
+		request.getSession().setAttribute("enchere", enchere);
 		//redirection à la page des articles
-		request.getServletContext().getRequestDispatcher("/WEB-INF/affichageArticles.jsp").forward(request, response);
+		request.getServletContext().getRequestDispatcher("/WEB-INF/succesEnchere.jsp").forward(request, response);
 		
 		
 	}
