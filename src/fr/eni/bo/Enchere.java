@@ -3,6 +3,7 @@ package fr.eni.bo;
 import java.time.LocalDate;
 
 public class Enchere {
+	private int noEnchere;
 	private int noUtilisateur;
 	private int noArticle;
 	private LocalDate dateEnchere;
@@ -12,12 +13,7 @@ public class Enchere {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param noUtilisateur
-	 * @param noArticle
-	 * @param dateEnchere
-	 * @param montantEnchere
-	 */
+	//constructeur sans noEnchere (pour placer l'enchere)
 	public Enchere(int noUtilisateur, int noArticle, LocalDate dateEnchere, int montantEnchere) {
 		super();
 		this.noUtilisateur = noUtilisateur;
@@ -25,6 +21,18 @@ public class Enchere {
 		this.dateEnchere = dateEnchere;
 		this.montantEnchere = montantEnchere;
 	}
+	
+	//constructeur avec tout
+	public Enchere(int noEnchere, int noUtilisateur, int noArticle, LocalDate dateEnchere, int montantEnchere) {
+		super();
+		this.noEnchere = noEnchere;
+		this.noUtilisateur = noUtilisateur;
+		this.noArticle = noArticle;
+		this.dateEnchere = dateEnchere;
+		this.montantEnchere = montantEnchere;
+	}
+	
+	
 
 	public int getNoUtilisateur() {
 		return noUtilisateur;
@@ -60,8 +68,16 @@ public class Enchere {
 
 	@Override
 	public String toString() {
-		return "Enchere [noUtilisateur=" + noUtilisateur + ", noArticle=" + noArticle + ", dateEnchere=" + dateEnchere
-				+ ", montantEnchere=" + montantEnchere + "]";
+		return "Enchere [noEnchere=" + noEnchere + ", noUtilisateur=" + noUtilisateur + ", noArticle=" + noArticle
+				+ ", dateEnchere=" + dateEnchere + ", montantEnchere=" + montantEnchere + "]";
+	}
+
+	public int getNoEnchere() {
+		return noEnchere;
+	}
+
+	public void setNoEnchere(int noEnchere) {
+		this.noEnchere = noEnchere;
 	}
 
 }
