@@ -13,11 +13,18 @@ public class ArticleVendu {
 	private int noUtilisateur;
 	private int noCategorie;
 	private String nomUtilisateur;
+	private Categorie categorie;
+	private Enchere enchere;
+	private Utilisateur utilisateur;
+	private int enchereGagnant;
+	private String libelle;
+	private String vendeur;
+	private String enchereur;
 	
-	public ArticleVendu() {
-		// TODO Auto-generated constructor stub
-	}
+	
 
+
+	
 	/**
 	 * @param noArticle
 	 * @param nomArticle
@@ -29,6 +36,10 @@ public class ArticleVendu {
 	 * @param noUtilisateur
 	 * @param noCategorie
 	 */
+	
+	public ArticleVendu() {
+		// TODO Auto-generated constructor stub
+	}
 	//constructeur avec noArticle mais sans nomUtilisateur
 	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
 			LocalDate dateFinEncheres, int prixInitial, int prixVente, int noUtilisateur, int noCategorie) {
@@ -85,6 +96,19 @@ public class ArticleVendu {
 		this.nomArticle = nomArticle;
 		this.noCategorie = noCategorie;
 	}
+	
+	//construction pour affichage de tous les articles
+	public ArticleVendu(String nomArticle, String libelle, String description, LocalDate localDate, int enchereGagnant,  String enchereur, String vendeur) {
+		super();
+		this.enchereGagnant = enchereGagnant;
+		this.libelle = libelle;
+		this.nomArticle =  nomArticle;
+		this.dateFinEncheres = localDate;
+		this.vendeur = vendeur;
+		this.description = description;
+		this.enchereur = enchereur;
+	}
+
 	
 	public String getNomUtilisateur() {
 		return nomUtilisateur;
@@ -174,7 +198,39 @@ public class ArticleVendu {
 		return "ArticleVendu [noArticle=" + noArticle + ", nomArticle=" + nomArticle + ", description=" + description
 				+ ", dateDebutEncheres=" + dateDebutEncheres + ", dateFinEncheres=" + dateFinEncheres + ", prixInitial="
 				+ prixInitial + ", prixVente=" + prixVente + ", noUtilisateur=" + noUtilisateur + ", noCategorie="
-				+ noCategorie + ", nomUtilisateur=" + nomUtilisateur + "]";
+				+ noCategorie + ", nomUtilisateur=" + nomUtilisateur + ", categorie=" + categorie + ", enchere="
+				+ enchere + ", utilisateur=" + utilisateur + ", enchereGagnant=" + enchereGagnant + ", libelle="
+				+ libelle + ", vendeur=" + vendeur + ", enchereur=" + enchereur + "]";
+	}
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+	public int getEnchereGagnant() {
+		return enchereGagnant;
+	}
+	public void setEnchereGagnant(int enchereGagnant) {
+		this.enchereGagnant = enchereGagnant;
+	}
+	public String getLibelle() {
+		return libelle;
+	}
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
+	}
+	public String getVendeur() {
+		return vendeur;
+	}
+	public void setVendeur(String vendeur) {
+		this.vendeur = vendeur;
+	}
+	public String getEnchereur() {
+		return enchereur;
+	}
+	public void setEnchereur(String enchereur) {
+		this.enchereur = enchereur;
 	}
 	
 }

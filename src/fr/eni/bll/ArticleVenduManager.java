@@ -47,4 +47,13 @@ public class ArticleVenduManager {
 		return listeArticles;
 
 	}
+	public List<ArticleVendu> afficherTousEtEncheres() {
+		ArticleVenduDAO articleVenduDAO = new ArticleVenduDAO();
+		List<ArticleVendu> listeArticles = new ArrayList<ArticleVendu>();
+
+		listeArticles = articleVenduDAO.afficherTousEtEncheres();
+		
+		return listeArticles;
+
+	}
 }

@@ -37,8 +37,38 @@
 			<option value="4">Sports et Loisirs</option>
 		</select> <input type="submit" value="valider" />
 	</form>
+	
+	<form action= "AfficherTousEtEncheres" method="get">
+	<input type="submit" value="afficher tous les articles" />
+	</form>
+	<c:if test="${fn:length(afficherTousEtEncheres) > 0}">
+		<table border="1">
+			<tr>
 
+				<th>nomArticle</th>
+				<th>categorie</th>
+				<th>description</th>
+				<th>dateFinEncheres</th>
+				<th>enchere gagnant</th>
+				<th>enchereur gagnant</th>
+				<th>vendeur</th>
 
+				<c:forEach items="${afficherTousEtEncheres}" var="tousarticle">
+					<tr>
+						<td>${tousarticle.nomArticle}</td>
+						<td>${tousarticle.libelle}</td>
+						<td>${tousarticle.description}</td>
+						<td>${tousarticle.dateFinEncheres}</td>
+						<td>${tousarticle.enchereGagnant}</td>
+						<td>${tousarticle.enchereur}</td>
+						<td>${tousarticle.vendeur}</td>
+
+					</tr>
+				</c:forEach>
+
+			</tr>
+		</table>
+	</c:if>
 	<c:if test="${fn:length(listeArticleRecherche) > 0}">
 		<table border="1">
 			<tr>
