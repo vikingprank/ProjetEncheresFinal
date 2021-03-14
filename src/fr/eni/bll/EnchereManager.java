@@ -13,9 +13,11 @@ public class EnchereManager {
 		Enchere enchere = new Enchere(noUtilisateur, noArticle, dateEnchere, montantEnchere);
 		
 		EnchereDAO enchereDAO = new EnchereDAO();
-		enchere = enchereDAO.insertEnchere(enchere);
+		int noEnchere = enchereDAO.insertEnchere(enchere);
 		
-		return enchere;
+		Enchere enchereAvecNoEnchere = new Enchere(noEnchere, noUtilisateur, noArticle, dateEnchere, montantEnchere);
+		
+		return enchereAvecNoEnchere;
 	}
 
 }
