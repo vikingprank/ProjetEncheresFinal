@@ -9,21 +9,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.eni.bll.ArticleVenduManager;
 import fr.eni.bo.ArticleVendu;
 
 /**
- * Servlet implementation class AjoutArticle
+ * Servlet implementation class AfficherTousEtEncheres
  */
-@WebServlet("/affichageArticles")
-public class AffichageArticles extends HttpServlet {
+@WebServlet("/AfficherTousEtEncheres")
+public class AfficherTousEtEncheres extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AffichageArticles() {
+    public AfficherTousEtEncheres() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,26 +33,22 @@ public class AffichageArticles extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("on est dans le doGet affichageArticles");
 		
-		ArticleVenduManager article = new ArticleVenduManager();
-		List<ArticleVendu> listeArticles = new ArrayList<ArticleVendu>();
-		listeArticles = article.afficherTousEtEncheres();
-		//System.out.println(listeArticles);
-		request.getSession().setAttribute("listeArticles", listeArticles);
-		//le placement du request.getServlet... est important car placé en début du goGet, la table ne s'affiche pas!
-		request.getServletContext().getRequestDispatcher("/WEB-INF/affichageArticles.jsp").forward(request, response);
-		
+		System.out.println("on est dans le dopost afficherTousEtEncheres");
+		HttpSession session = request.getSession();
+		ArticleVenduManager articleVenduManager = new ArticleVenduManager();
+		List<ArticleVendu> afficherTousEtEncheres = new ArrayList<ArticleVendu>();
+		afficherTousEtEncheres = articleVenduManager.afficherTousEtEncheres();
+		session.setAttribute("afficherTousEtEncheres", afficherTousEtEncheres);
+		request.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("on est dans le doPost affichageArticles");
-		
-		request.getServletContext().getRequestDispatcher("/WEB-INF/encherir.jsp").forward(request, response);
-		
+
+		request.getServletContext().getRequestDispatcher("/accueil.jsp").forward(request, response);
 	}
 
 }
