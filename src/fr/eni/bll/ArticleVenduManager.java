@@ -22,38 +22,33 @@ public class ArticleVenduManager {
 		ArticleVenduDAO articleVenduDAO = new ArticleVenduDAO();
 		List<ArticleVendu> listeArticleRecherche = new ArrayList<ArticleVendu>();
 		
-		if(articleRecherche.getNoCategorie() != 0 && !(articleRecherche.getNomArticle().isEmpty()))
+		if(articleRecherche.getCategorie().getNoCategorie() != 0 && !(articleRecherche.getNomArticle().isEmpty()))
 		{
 			listeArticleRecherche = articleVenduDAO.selectArticle(articleRecherche, 0);
 		}
-		if(articleRecherche.getNoCategorie() != 0 && articleRecherche.getNomArticle().isEmpty())
+		if(articleRecherche.getCategorie().getNoCategorie() != 0 && articleRecherche.getNomArticle().isEmpty())
 		{
 			listeArticleRecherche = articleVenduDAO.selectArticle(articleRecherche, 1);
 		}
-		if(articleRecherche.getNoCategorie() == 0 && !(articleRecherche.getNomArticle().isEmpty()))
+		if(articleRecherche.getCategorie().getNoCategorie() == 0 && !(articleRecherche.getNomArticle().isEmpty()))
 		{
 			listeArticleRecherche = articleVenduDAO.selectArticle(articleRecherche, 2);
 		}
 		return listeArticleRecherche;
 	}
 
-
-	public List<ArticleVendu> afficherTous() {
-		ArticleVenduDAO articleVenduDAO = new ArticleVenduDAO();
-		List<ArticleVendu> listeArticles = new ArrayList<ArticleVendu>();
-
-		listeArticles = articleVenduDAO.afficherTous();
-		
-		return listeArticles;
-
-	}
+//
+//	public List<ArticleVendu> afficherTous() {
+//		ArticleVenduDAO articleVenduDAO = new ArticleVenduDAO();
+//		List<ArticleVendu> listeArticles = new ArrayList<ArticleVendu>();
+//
+//		listeArticles = articleVenduDAO.afficherTous();
+//		
+//		return listeArticles;
+//
+//	}
 	public List<ArticleVendu> afficherTousEtEncheres() {
 		ArticleVenduDAO articleVenduDAO = new ArticleVenduDAO();
-		List<ArticleVendu> listeArticles = new ArrayList<ArticleVendu>();
-
-		listeArticles = articleVenduDAO.afficherTousEtEncheres();
-		
-		return listeArticles;
-
+		return articleVenduDAO.afficherTousEtEncheres();
 	}
 }

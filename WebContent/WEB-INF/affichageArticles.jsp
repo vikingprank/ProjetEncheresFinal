@@ -31,7 +31,7 @@
 <c:forEach items="${sessionScope.listeArticles}" var="article">
 
 	<tr>
-	<td>${article.noArticle}</td>
+	<%--  <td>${article.noArticle}</td>
 	<td>${article.nomArticle}</td>
 	<td>${article.description}</td>
 	<td>${article.dateDebutEncheres}</td>
@@ -39,7 +39,7 @@
 	<td>${article.prixInitial}</td>
 	<td>${article.noUtilisateur}</td>
 	<td>${article.noCategorie}</td>
-	<td>${article.nomUtilisateur}</td>
+	<td>${article.nomUtilisateur}</td>--%>
 	<td><form action="encherir" method="get"><button name="noArticleAEncherir" value="${article.noArticle}">encherir (doit être connecté)</button>
 	</form></td>
 	</tr>

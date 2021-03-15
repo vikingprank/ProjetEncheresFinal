@@ -10,17 +10,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.bo.ArticleVendu;
+import fr.eni.bo.Categorie;
+import fr.eni.bo.Utilisateur;
 
 public class ArticleVenduDAO {
 	private static final String SELECT_ARTICLE_CATEG_AND_NOM = "SELECT * From ARTICLES_VENDUS WHERE nomArticle=? and noCategorie=?";
 	private static final String SELECT_ARTICLE__NOM = "SELECT * From ARTICLES_VENDUS WHERE nomArticle=?";
 	private static final String SELECT_ARTICLE_CATEG = "SELECT * From ARTICLES_VENDUS WHERE noCategorie=?";
-	private static final String SELECT_TOUS_ARTICLE_ET_ENCHERES = "SELECT a.nomArticle, c.libelle, a.description, a.dateFinEncheres, MAX(montantEnchere) as enchereGagnant, a.nomUtilisateur as vendeur, u.pseudo as enchereur\r\n"
+	private static final String SELECT_TOUS_ARTICLE_ET_ENCHERES = "SELECT *\r\n"
 			+ "FROM 	ARTICLES_VENDUS a\r\n"
 			+ "LEFT JOIN ENCHERES e ON e.noArticle = a.noArticle \r\n"
 			+ "INNER JOIN CATEGORIES c ON a.noCategorie = c.noCategorie\r\n"
-			+ "LEFT JOIN UTILISATEURS u ON u.noUtilisateur = e.noUtilisateur\r\n"
-			+ "GROUP BY e.noArticle, c.libelle, a.nomArticle, a.description, a.dateFinEncheres, a.nomUtilisateur, e.noUtilisateur, u.pseudo";
+			+ "LEFT JOIN UTILISATEURS u ON u.noUtilisateur = a.noUtilisateur\r\n";
 	public ArticleVendu ajouterArticle(ArticleVendu article) {
 
 		Connection cnx;
@@ -84,6 +85,8 @@ public class ArticleVenduDAO {
 		return articleTrouves;
 	}
 	
+
+	
 	public List<ArticleVendu> afficherTousEtEncheres() {
 		List<ArticleVendu> liste = new ArrayList<ArticleVendu>();
 		try {
@@ -91,55 +94,28 @@ public class ArticleVenduDAO {
 			PreparedStatement pstmt = cnx.prepareStatement(SELECT_TOUS_ARTICLE_ET_ENCHERES);
 			ResultSet rs = null;
 			rs = pstmt.executeQuery();
-			ArticleVendu articleVendu = null;
-		
-			while (rs.next()) {
-				articleVendu = new ArticleVendu(rs.getString("nomArticle"),
-						rs.getString("libelle"),
-						rs.getString("description"),
-						rs.getDate("dateFinEncheres").toLocalDate(),
-						rs.getInt("enchereGagnant"),
-						rs.getString("enchereur"),
-						rs.getString("vendeur"));
-				liste.add(articleVendu);
-				System.out.println("articlevendu=" + articleVendu);
-			}
-			cnx.close();
+			ArticleVendu articleVendu = new ArticleVendu();
 			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return liste;
-	}
-	
-	public List<ArticleVendu> afficherTous() {
-		try {
-			Connection cnx = ConnectionProvider.getConnection();
-			PreparedStatement pstmt = cnx.prepareStatement("SELECT * From Articles_Vendus;");
-			ResultSet rs = null;
-			rs = pstmt.executeQuery();
-			ArticleVendu articleVendu = null;
-			List<ArticleVendu> liste = new ArrayList<ArticleVendu>();
 			while (rs.next()) {
+				Categorie categorie = new Categorie(rs.getInt("noCategorie"), rs.getString("libelle"));
+				Utilisateur utilisateur = new Utilisateur();
+				utilisateur.setPseudo(rs.getString("pseudo"));
 				articleVendu = new ArticleVendu(rs.getInt("noArticle"),
 						rs.getString("nomArticle"), 
 						rs.getString("description"),
 						rs.getDate("dateDebutEncheres").toLocalDate(),
 						rs.getDate("dateFinEncheres").toLocalDate(),
 						rs.getInt("prixInitial"),
-						rs.getInt("noUtilisateur"),
-						rs.getInt("noCategorie"),
-						rs.getString("nomUtilisateur"));
+						rs.getInt("prixVente"),
+						categorie,
+						utilisateur);
 				liste.add(articleVendu);
 			}
 			cnx.close();
-			return liste;
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return liste;
 	}
 }

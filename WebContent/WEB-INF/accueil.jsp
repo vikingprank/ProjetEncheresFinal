@@ -56,12 +56,12 @@
 				<c:forEach items="${afficherTousEtEncheres}" var="tousarticle">
 					<tr>
 						<td>${tousarticle.nomArticle}</td>
-						<td>${tousarticle.libelle}</td>
+						<td>${tousarticle.categorie.libelle}</td>
 						<td>${tousarticle.description}</td>
 						<td>${tousarticle.dateFinEncheres}</td>
-						<td>${tousarticle.enchereGagnant}</td>
-						<td>${tousarticle.enchereur}</td>
-						<td>${tousarticle.vendeur}</td>
+						<td></td>
+						<td></td>
+						<td>${tousarticle.utilisateur.pseudo}</td>
 
 					</tr>
 				</c:forEach>

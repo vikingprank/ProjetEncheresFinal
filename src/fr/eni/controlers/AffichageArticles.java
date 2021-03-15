@@ -36,7 +36,7 @@ public class AffichageArticles extends HttpServlet {
 		
 		ArticleVenduManager article = new ArticleVenduManager();
 		List<ArticleVendu> listeArticles = new ArrayList<ArticleVendu>();
-		listeArticles = article.afficherTous();
+		listeArticles = article.afficherTousEtEncheres();
 		//System.out.println(listeArticles);
 		request.getSession().setAttribute("listeArticles", listeArticles);
 		//le placement du request.getServlet... est important car placé en début du goGet, la table ne s'affiche pas!
