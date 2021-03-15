@@ -1,6 +1,7 @@
 package fr.eni.bo;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class ArticleVendu {
 
@@ -13,8 +14,8 @@ public class ArticleVendu {
 	private int prixInitial;
 	private int prixVente;
 	private Categorie categorie;
-	//private list <Enchere> enchere;
 	private Utilisateur utilisateur;
+	private List <Enchere> enchere;
 
 
 	public ArticleVendu() {
@@ -34,6 +35,33 @@ public class ArticleVendu {
 		this.categorie = categorie;
 		//this.enchere = enchere;
 		this.utilisateur = utilisateur;
+	}
+	/**
+	 * @param noArticle
+	 * @param nomArticle
+	 * @param description
+	 * @param dateDebutEncheres
+	 * @param dateFinEncheres
+	 * @param prixInitial
+	 * @param prixVente
+	 * @param categorie
+	 * @param utilisateur
+	 * @param enchere
+	 */
+	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
+			LocalDate dateFinEncheres, int prixInitial, int prixVente, Categorie categorie, Utilisateur utilisateur,
+			List<Enchere> enchere) {
+		super();
+		this.noArticle = noArticle;
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.dateDebutEncheres = dateDebutEncheres;
+		this.dateFinEncheres = dateFinEncheres;
+		this.prixInitial = prixInitial;
+		this.prixVente = prixVente;
+		this.categorie = categorie;
+		this.utilisateur = utilisateur;
+		this.enchere = enchere;
 	}
 
 	public int getNoArticle() {
@@ -117,13 +145,23 @@ public class ArticleVendu {
 		this.utilisateur = utilisateur;
 	}
 
+	public List<Enchere> getEnchere() {
+		return enchere;
+	}
+
+	public void setEnchere(List<Enchere> enchere) {
+		this.enchere = enchere;
+	}
+
 	@Override
 	public String toString() {
 		return "ArticleVendu [noArticle=" + noArticle + ", nomArticle=" + nomArticle + ", description=" + description
 				+ ", dateDebutEncheres=" + dateDebutEncheres + ", dateFinEncheres=" + dateFinEncheres + ", prixInitial="
-				+ prixInitial + ", prixVente=" + prixVente + ", + " + "categorie=" + categorie
+				+ prixInitial + ", prixVente=" + prixVente + ", categorie=" + categorie + ", enchere=" + enchere
 				+ ", utilisateur=" + utilisateur + "]";
 	}
+
+
 
 
 }

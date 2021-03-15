@@ -11,6 +11,7 @@ import java.util.List;
 
 import fr.eni.bo.ArticleVendu;
 import fr.eni.bo.Categorie;
+import fr.eni.bo.Enchere;
 import fr.eni.bo.Utilisateur;
 
 public class ArticleVenduDAO {
@@ -95,11 +96,25 @@ public class ArticleVenduDAO {
 			ResultSet rs = null;
 			rs = pstmt.executeQuery();
 			ArticleVendu articleVendu = new ArticleVendu();
+			List <Enchere> encheres = new ArrayList<Enchere>();
 			
 			while (rs.next()) {
 				Categorie categorie = new Categorie(rs.getInt("noCategorie"), rs.getString("libelle"));
 				Utilisateur utilisateur = new Utilisateur();
+				
+				Enchere enchere = new Enchere();
+				
 				utilisateur.setPseudo(rs.getString("pseudo"));
+							
+					if (rs.getInt("noArticle") == articleVendu.getNoArticle()) {
+					enchere = new Enchere(rs.getInt("noEnchere"),
+							rs.getInt("noUtilisateur"),
+							rs.getInt("noArticle"),
+							rs.getDate("dateEnchere").toLocalDate(),
+							rs.getInt("montantEnchere"));
+					encheres.add(enchere);	
+					}
+				
 				articleVendu = new ArticleVendu(rs.getInt("noArticle"),
 						rs.getString("nomArticle"), 
 						rs.getString("description"),
@@ -108,7 +123,9 @@ public class ArticleVenduDAO {
 						rs.getInt("prixInitial"),
 						rs.getInt("prixVente"),
 						categorie,
-						utilisateur);
+						utilisateur,
+						encheres);
+				
 				liste.add(articleVendu);
 			}
 			cnx.close();
@@ -116,6 +133,7 @@ public class ArticleVenduDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println(liste);
 		return liste;
 	}
 }

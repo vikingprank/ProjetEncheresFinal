@@ -52,18 +52,23 @@
 				<th>enchere gagnant</th>
 				<th>enchereur gagnant</th>
 				<th>vendeur</th>
-
+				
 				<c:forEach items="${afficherTousEtEncheres}" var="tousarticle">
+				
 					<tr>
 						<td>${tousarticle.nomArticle}</td>
 						<td>${tousarticle.categorie.libelle}</td>
 						<td>${tousarticle.description}</td>
 						<td>${tousarticle.dateFinEncheres}</td>
-						<td></td>
-						<td></td>
+						
+						<c:forEach items="${tousarticle.enchere}" var="encheres">
+						<td>${encheres.montantEnchere}</td>
+						<td>${encheres.noUtilisateur}</td>
+						</c:forEach>
 						<td>${tousarticle.utilisateur.pseudo}</td>
 
 					</tr>
+				
 				</c:forEach>
 
 			</tr>
