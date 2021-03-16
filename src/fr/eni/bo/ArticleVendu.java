@@ -1,6 +1,7 @@
 package fr.eni.bo;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ArticleVendu {
@@ -33,7 +34,7 @@ public class ArticleVendu {
 		this.prixInitial = prixInitial;
 		this.prixVente = prixVente;
 		this.categorie = categorie;
-		//this.enchere = enchere;
+		this.enchere = new ArrayList<>();
 		this.utilisateur = utilisateur;
 	}
 	/**
@@ -159,6 +160,28 @@ public class ArticleVendu {
 				+ ", dateDebutEncheres=" + dateDebutEncheres + ", dateFinEncheres=" + dateFinEncheres + ", prixInitial="
 				+ prixInitial + ", prixVente=" + prixVente + ", categorie=" + categorie + ", enchere=" + enchere
 				+ ", utilisateur=" + utilisateur + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + noArticle;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ArticleVendu other = (ArticleVendu) obj;
+		if (noArticle != other.noArticle)
+			return false;
+		return true;
 	}
 
 

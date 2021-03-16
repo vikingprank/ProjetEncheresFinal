@@ -61,10 +61,12 @@
 						<td>${tousarticle.description}</td>
 						<td>${tousarticle.dateFinEncheres}</td>
 						
-						<c:forEach items="${tousarticle.enchere}" var="encheres">
-						<td>${encheres.montantEnchere}</td>
-						<td>${encheres.noUtilisateur}</td>
+						<c:forEach items="${tousarticle.enchere}" var="enchere">
+						
+						${enchere.noEnchere}
+						
 						</c:forEach>
+						
 						<td>${tousarticle.utilisateur.pseudo}</td>
 
 					</tr>
