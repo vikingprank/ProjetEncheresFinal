@@ -15,13 +15,14 @@ import fr.eni.bo.Enchere;
 import fr.eni.bo.Utilisateur;
 
 public class ArticleVenduDAO {
+	private static final String AJOUT_ARTICLE = "INSERT INTO ARTICLES_VENDUS(nomArticle, description, dateDebutEncheres, dateFinEncheres, prixInitial, noVendeur, noCategorie) VALUES (?,?,?,?,?,?,?)";
 	private static final String SELECT_ARTICLE_CATEG_AND_NOM = "SELECT * From ARTICLES_VENDUS WHERE nomArticle=? and noCategorie=?";
 	private static final String SELECT_ARTICLE__NOM = "SELECT * From ARTICLES_VENDUS WHERE nomArticle=?";
 	private static final String SELECT_ARTICLE_CATEG = "SELECT * From ARTICLES_VENDUS WHERE noCategorie=?";
 	private static final String SELECT_TOUS_ARTICLE_ET_ENCHERES = "SELECT *\r\n" + "FROM 	ARTICLES_VENDUS a\r\n"
 			+ "LEFT JOIN ENCHERES e ON e.noArticle = a.noArticle \r\n"
 			+ "INNER JOIN CATEGORIES c ON a.noCategorie = c.noCategorie\r\n"
-			+ "LEFT JOIN UTILISATEURS u ON u.noUtilisateur = a.noUtilisateur\r\n "
+			+ "LEFT JOIN UTILISATEURS u ON u.noUtilisateur = a.noVendeur\r\n "
 			+ "ORDER BY e.noArticle, noEnchere";
 
 	public ArticleVendu ajouterArticle(ArticleVendu article) {
@@ -29,16 +30,15 @@ public class ArticleVenduDAO {
 		Connection cnx;
 		try {
 			cnx = ConnectionProvider.getConnection();
-			PreparedStatement pstmt = cnx.prepareStatement(
-					"INSERT INTO ARTICLES_VENDUS(nomArticle, description, dateDebutEncheres, dateFinEncheres, prixInitial, noUtilisateur, noCategorie, nomUtilisateur) VALUES (?,?,?,?,?,?,?,?)");
+			PreparedStatement pstmt = cnx.prepareStatement(AJOUT_ARTICLE);
+					
 			pstmt.setString(1, article.getNomArticle());
 			pstmt.setString(2, article.getDescription());
 			pstmt.setDate(3, Date.valueOf(article.getDateDebutEncheres()));
 			pstmt.setDate(4, Date.valueOf(article.getDateFinEncheres()));
 			pstmt.setInt(5, article.getPrixInitial());
-			pstmt.setInt(6, article.getNoUtilisateur());
+			pstmt.setInt(6, article.getNoVendeur());
 			pstmt.setInt(7, article.getNoCategorie());
-			pstmt.setString(8, article.getNomUtilisateur());
 
 			pstmt.executeUpdate();
 			cnx.close();
@@ -125,9 +125,10 @@ public class ArticleVenduDAO {
 				Enchere enchere = new Enchere();
 				
 				enchere = new Enchere(rs.getInt("noEnchere"), 
-						rs.getInt("noUtilisateur"), 
+						rs.getInt("noEnchereur"), 
 						rs.getInt("noArticle"),
-						rs.getDate("dateEnchere").toLocalDate(), 
+						LocalDate.now(),
+						//rs.getDate("dateEnchere").toLocalDate(), 
 						rs.getInt("montantEnchere"));
 				for (ArticleVendu articleVendu : liste) {
 					if (articleVendu.getNoArticle() == enchere.getNoArticle()) {

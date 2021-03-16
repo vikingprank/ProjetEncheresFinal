@@ -43,7 +43,7 @@ public class AjoutArticle extends HttpServlet {
 		System.out.println("test doPost ajoutArticle");
 		String nomArticle = request.getParameter("nomArticle");
 		String description = request.getParameter("description");
-		LocalDate dateDebutEncheres = LocalDate.parse(request.getParameter("dateDebutEncheres"));
+		LocalDate dateDebutEncheres = LocalDate.now();
 		LocalDate dateFinEncheres = LocalDate.parse(request.getParameter("dateFinEncheres"));
 		int prixInitial = Integer.valueOf(request.getParameter("prixInitial"));
 		int noCategorie = Integer.valueOf(request.getParameter("noCategorie"));
@@ -53,7 +53,7 @@ public class AjoutArticle extends HttpServlet {
 		int noUtilisateur = utilisateurRecupNum.getNoUtilisateur();
 		String nomUtilisateur = utilisateurRecupNum.getPseudo();
 		
-		ArticleVendu article = new ArticleVendu(nomArticle, description, dateDebutEncheres, dateFinEncheres, prixInitial, noUtilisateur, noCategorie, nomUtilisateur);
+		ArticleVendu article = new ArticleVendu(nomArticle, description, dateDebutEncheres, dateFinEncheres, prixInitial, noUtilisateur, noCategorie);
 		ArticleVenduManager articleVenduManager = new ArticleVenduManager();
 		System.out.println(article);
 		articleVenduManager.ajouterArticle(article);

@@ -19,9 +19,6 @@
 <label for="description">Description :</label>
 <input type="text" id="description" name="description"><br>
 
-<label for="dateDebutEncheres">Date de Debut des Encheres :</label>
-<input type="date" id="dateDebutEncheres" name="dateDebutEncheres"><br>
-
 <label for="dateFinEncheres">Date de Fin des Encheres :</label>
 <input type="date" id="dateFinEncheres" name="dateFinEncheres"><br>
 

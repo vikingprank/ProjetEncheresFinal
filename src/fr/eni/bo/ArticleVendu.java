@@ -17,6 +17,8 @@ public class ArticleVendu {
 	private Categorie categorie;
 	private Utilisateur utilisateur;
 	private List <Enchere> enchere;
+	private int noVendeur;
+	private int noCategorie;
 
 
 	public ArticleVendu() {
@@ -63,6 +65,23 @@ public class ArticleVendu {
 		this.categorie = categorie;
 		this.utilisateur = utilisateur;
 		this.enchere = enchere;
+	}
+	//constructeur Ajout article
+	public ArticleVendu(String nomArticle, String description, LocalDate dateDebutEncheres,
+			LocalDate dateFinEncheres, int prixInitial, int noVendeur, int noCategorie) {
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.dateDebutEncheres = dateDebutEncheres;
+		this.dateFinEncheres = dateFinEncheres;
+		this.prixInitial = prixInitial;
+		this.noVendeur = noVendeur;
+		this.noCategorie = noCategorie;
+		
+	}
+
+	public ArticleVendu(String nomArticle, int noCategorie) {
+		this.nomArticle = nomArticle;
+		this.noCategorie = noCategorie;
 	}
 
 	public int getNoArticle() {
@@ -154,12 +173,28 @@ public class ArticleVendu {
 		this.enchere = enchere;
 	}
 
+	public int getNoVendeur() {
+		return noVendeur;
+	}
+
+	public void setNoVendeur(int noVendeur) {
+		this.noVendeur = noVendeur;
+	}
+
+	public int getNoCategorie() {
+		return noCategorie;
+	}
+
+	public void setNoCategorie(int noCategorie) {
+		this.noCategorie = noCategorie;
+	}
+
 	@Override
 	public String toString() {
 		return "ArticleVendu [noArticle=" + noArticle + ", nomArticle=" + nomArticle + ", description=" + description
 				+ ", dateDebutEncheres=" + dateDebutEncheres + ", dateFinEncheres=" + dateFinEncheres + ", prixInitial="
-				+ prixInitial + ", prixVente=" + prixVente + ", categorie=" + categorie + ", enchere=" + enchere
-				+ ", utilisateur=" + utilisateur + "]";
+				+ prixInitial + ", prixVente=" + prixVente + ", categorie=" + categorie + ", utilisateur=" + utilisateur
+				+ ", enchere=" + enchere + ", noVendeur=" + noVendeur + ", noCategorie=" + noCategorie + "]";
 	}
 
 	@Override

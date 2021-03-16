@@ -45,8 +45,10 @@ public class RechercheArticle extends HttpServlet {
 		System.out.println(noCategorie + "   " + nomArticle);
 		ArticleVenduManager articleVenduManager = new ArticleVenduManager();
 		ArticleVendu articleRecherche = new ArticleVendu(nomArticle, noCategorie);
-		List<ArticleVendu> listeArticleRecherche = new ArrayList<ArticleVendu>();
-		listeArticleRecherche = articleVenduManager.rechercheArticle(articleRecherche);
+		List<ArticleVendu> listeRecupereTousArticle = articleVenduManager.afficherTousEtEncheres();
+		
+		
+		
 		session.setAttribute("listeArticleRecherche", listeArticleRecherche);
 		request.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
 		

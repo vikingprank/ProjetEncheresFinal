@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Enchere {
 	private int noEnchere;
-	private int noUtilisateur;
+	private int noEnchereur;
 	private int noArticle;
 	private LocalDate dateEnchere;
 	private int montantEnchere;
@@ -14,19 +14,19 @@ public class Enchere {
 	}
 
 	//constructeur sans noEnchere (pour placer l'enchere)
-	public Enchere(int noUtilisateur, int noArticle, LocalDate dateEnchere, int montantEnchere) {
+	public Enchere(int noEnchereur, int noArticle, LocalDate dateEnchere, int montantEnchere) {
 		super();
-		this.noUtilisateur = noUtilisateur;
+		this.noEnchereur = noEnchereur;
 		this.noArticle = noArticle;
 		this.dateEnchere = dateEnchere;
 		this.montantEnchere = montantEnchere;
 	}
 	
 	//constructeur avec tout
-	public Enchere(int noEnchere, int noUtilisateur, int noArticle, LocalDate dateEnchere, int montantEnchere) {
+	public Enchere(int noEnchere, int noEnchereur, int noArticle, LocalDate dateEnchere, int montantEnchere) {
 		super();
 		this.noEnchere = noEnchere;
-		this.noUtilisateur = noUtilisateur;
+		this.noEnchereur = noEnchereur;
 		this.noArticle = noArticle;
 		this.dateEnchere = dateEnchere;
 		this.montantEnchere = montantEnchere;
@@ -34,8 +34,14 @@ public class Enchere {
 	
 	
 
-	public int getNoUtilisateur() {
-		return noUtilisateur;
+	
+
+	public int getNoEnchereur() {
+		return noEnchereur;
+	}
+
+	public void setNoEnchereur(int noEnchereur) {
+		this.noEnchereur = noEnchereur;
 	}
 
 	public int getNoArticle() {
@@ -50,9 +56,7 @@ public class Enchere {
 		return montantEnchere;
 	}
 
-	public void setNoUtilisateur(int noUtilisateur) {
-		this.noUtilisateur = noUtilisateur;
-	}
+	
 
 	public void setNoArticle(int noArticle) {
 		this.noArticle = noArticle;
@@ -66,18 +70,19 @@ public class Enchere {
 		this.montantEnchere = montantEnchere;
 	}
 
-	@Override
-	public String toString() {
-		return "Enchere [noEnchere=" + noEnchere + ", noUtilisateur=" + noUtilisateur + ", noArticle=" + noArticle
-				+ ", dateEnchere=" + dateEnchere + ", montantEnchere=" + montantEnchere + "]";
-	}
-
+	
 	public int getNoEnchere() {
 		return noEnchere;
 	}
 
 	public void setNoEnchere(int noEnchere) {
 		this.noEnchere = noEnchere;
+	}
+
+	@Override
+	public String toString() {
+		return "Enchere [noEnchere=" + noEnchere + ", noEnchereur=" + noEnchereur + ", noArticle=" + noArticle
+				+ ", dateEnchere=" + dateEnchere + ", montantEnchere=" + montantEnchere + "]";
 	}
 
 }
