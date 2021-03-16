@@ -1,5 +1,5 @@
 
-<nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<ul>
 		<li><a href="accueil">Accueil</a></li>
 		<li><a href="inscription">Inscription</a></li>

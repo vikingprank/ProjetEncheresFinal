@@ -6,10 +6,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link type="text/css" href="bootstrap.css" rel="stylesheet">
 <meta charset="ISO-8859-1">
 <title>Accueil</title>
 </head>
-<body>
+<body class="container-fluid col-lg-12">
 	<header>
 		<%@include file="menu.jsp"%>
 	</header>
@@ -21,7 +22,14 @@
 	</c:if>
 
 	<c:if test="${ !empty utilisateurConnecte }">
-		<p>${ utilisateurConnecte.pseudo }connectéa la session</p>
+
+		<div class="alert alert-warning" role="alert">
+			<p>
+				<strong>Bonjour ${ utilisateurConnecte.pseudo },</strong> vous êtes
+				connecté(e)
+			</p>
+		</div>
+
 		<form action="deconnexion" method="get">
 			<input type="submit" value="deconnexion" />
 		</form>
@@ -35,68 +43,54 @@
 			<option value="2">Ameublement</option>
 			<option value="3">Vêtements</option>
 			<option value="4">Sports et Loisirs</option>
-		</select> <input type="submit" value="valider" />
+		</select> <input type="submit" class="btn btn-primary" value="valider" />
 	</form>
-	
-	<form action= "AfficherTousEtEncheres" method="get">
-	<input type="submit" value="afficher tous les articles" />
+
+	<form action="AfficherTousEtEncheres" method="get">
+		<input type="submit" class="btn btn-primary"
+			value="afficher tous les articles" />
 	</form>
-	<c:if test="${fn:length(afficherTousEtEncheres) > 0}">
-		<table border="1">
-			<tr>
+	<div class="row">
+		<div class="row col-lg-8">
+			<c:forEach items="${afficherTousEtEncheres}" var="tousarticle">
+				<div class="col-lg-4">
+					<div class="card">
+						<img class="card-img-top" src="./img/products.jpg"
+							alt="Card image">
+						<div class="card-body">
+							<h4 class="card-title">Nom de l'article :
+								${tousarticle.nomArticle}</h4>
+							<div>
+								<p class="card-text">
+									Categorie : ${tousarticle.categorie.libelle}<br>
+									Description : ${tousarticle.description}<br> Date fin :
+									${tousarticle.dateFinEncheres}<br> vendeur :
+									${tousarticle.utilisateur.pseudo}
+								<p>
+								<table class="table">
+									<thead class="thead-light">
+										<tr>
+											<th>Enchereur</th>
+											<th>Montant Enchere</th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach items="${tousarticle.enchere}" var="enchere">
+											<tr>
+												<td>${enchere.noEnchereur}</td>
+												<td>${enchere.montantEnchere}</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+								<a href="#!" class="btn btn-primary">Encherir</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+		</div>
+	</div>
 
-				<th>nomArticle</th>
-				<th>categorie</th>
-				<th>description</th>
-				<th>dateFinEncheres</th>
-				<th>enchere gagnant</th>
-				<th>enchereur gagnant</th>
-				<th>vendeur</th>
-				
-				<c:forEach items="${afficherTousEtEncheres}" var="tousarticle">
-				
-					<tr>
-						<td>${tousarticle.nomArticle}</td>
-						<td>${tousarticle.categorie.libelle}</td>
-						<td>${tousarticle.description}</td>
-						<td>${tousarticle.dateFinEncheres}</td>
-						
-						<c:forEach items="${tousarticle.enchere}" var="enchere">
-						
-						${enchere.noEnchere}
-						
-						</c:forEach>
-						
-						<td>${tousarticle.utilisateur.pseudo}</td>
-
-					</tr>
-				
-				</c:forEach>
-
-			</tr>
-		</table>
-	</c:if>
-	<c:if test="${fn:length(listeArticleRecherche) > 0}">
-		<table border="1">
-			<tr>
-
-				<th>nomArticle</th>
-				<th>dateFinEncheres</th>
-				<th>prixInitial</th>
-				<th>nomUtilisateur</th>
-
-				<c:forEach items="${listeArticleRecherche}" var="article">
-					<tr>
-						<td>${article.nomArticle}</td>
-						<td>${article.dateFinEncheres}</td>
-						<td>${article.prixInitial}</td>
-						<td>${article.nomUtilisateur}</td>
-
-					</tr>
-				</c:forEach>
-
-			</tr>
-		</table>
-	</c:if>
 </body>
 </html>
