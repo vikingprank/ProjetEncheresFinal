@@ -21,16 +21,15 @@ public class ArticleVenduManager {
 	public List<ArticleVendu> rechercheArticle(ArticleVendu articleRecherche) {
 		ArticleVenduDAO articleVenduDAO = new ArticleVenduDAO();
 		List<ArticleVendu> listeArticleRecherche = new ArrayList<ArticleVendu>();
-		
-		if(articleRecherche.getCategorie().getNoCategorie() != 0 && !(articleRecherche.getNomArticle().isEmpty()))
+		if(articleRecherche.getNoCategorie() != 0 && !(articleRecherche.getNomArticle().isEmpty()))
 		{
 			listeArticleRecherche = articleVenduDAO.selectArticle(articleRecherche, 0);
 		}
-		if(articleRecherche.getCategorie().getNoCategorie() != 0 && articleRecherche.getNomArticle().isEmpty())
+		if(articleRecherche.getNoCategorie() != 0 && articleRecherche.getNomArticle().isEmpty())
 		{
 			listeArticleRecherche = articleVenduDAO.selectArticle(articleRecherche, 1);
 		}
-		if(articleRecherche.getCategorie().getNoCategorie() == 0 && !(articleRecherche.getNomArticle().isEmpty()))
+		if(articleRecherche.getNoCategorie() == 0 && !(articleRecherche.getNomArticle().isEmpty()))
 		{
 			listeArticleRecherche = articleVenduDAO.selectArticle(articleRecherche, 2);
 		}

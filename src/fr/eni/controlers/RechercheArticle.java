@@ -42,10 +42,9 @@ public class RechercheArticle extends HttpServlet {
 		int noCategorie = 0;
 		nomArticle = request.getParameter("nomArticle");
 		noCategorie = Integer.valueOf(request.getParameter("noCategorie"));
-		System.out.println(noCategorie + "   " + nomArticle);
 		ArticleVenduManager articleVenduManager = new ArticleVenduManager();
 		ArticleVendu articleRecherche = new ArticleVendu(nomArticle, noCategorie);
-		List<ArticleVendu> listeRecupereTousArticle = articleVenduManager.afficherTousEtEncheres();
+		List<ArticleVendu> listeArticleRecherche = articleVenduManager.rechercheArticle(articleRecherche);
 		
 		
 		
