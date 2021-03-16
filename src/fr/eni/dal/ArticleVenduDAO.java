@@ -19,10 +19,11 @@ public class ArticleVenduDAO {
 	private static final String SELECT_ARTICLE_CATEG_AND_NOM = "SELECT * FROM ARTICLES_VENDUS a\r\n"
 			+ "LEFT JOIN ENCHERES e ON e.noArticle = a.noArticle \r\n"
 			+ "INNER JOIN CATEGORIES c ON a.noCategorie = c.noCategorie\r\n "
-			+ "LEFT JOIN UTILISATEURS u ON u.noUtilisateur = e.noEnchereur\r\n "
-			+ "WHERE  a.noCategorie =? and a.nomArticle LIKE ?";
-	private static final String SELECT_ARTICLE__NOM = "SELECT * From ARTICLES_VENDUS a LEFT JOIN ENCHERES e ON e.noArticle = a.noArticle INNER JOIN CATEGORIES c ON a.noCategorie = c.noCategorie LEFT JOIN UTILISATEURS u ON u.noUtilisateur = e.noEnchereur WHERE a.nomArticle LIKE ?";
-	private static final String SELECT_ARTICLE_CATEG = "SELECT * From ARTICLES_VENDUS a LEFT JOIN ENCHERES e ON e.noArticle = a.noArticle INNER JOIN CATEGORIES c ON a.noCategorie = c.noCategorie LEFT JOIN UTILISATEURS u ON u.noUtilisateur = e.noEnchereur  WHERE  a.noCategorie =?";
+			+ "LEFT JOIN UTILISATEURS u ON u.noUtilisateur = a.noVendeur\r\n "
+			+ "WHERE  a.noCategorie =? and a.nomArticle LIKE ? ORDER BY a.noArticle";
+			//+ "ORDER BY a.noArticle";
+	private static final String SELECT_ARTICLE__NOM = "SELECT * From ARTICLES_VENDUS a LEFT JOIN ENCHERES e ON e.noArticle = a.noArticle INNER JOIN CATEGORIES c ON a.noCategorie = c.noCategorie LEFT JOIN UTILISATEURS u ON u.noUtilisateur = a.noVendeur WHERE a.nomArticle LIKE ? ORDER BY a.noArticle";
+	private static final String SELECT_ARTICLE_CATEG = "SELECT * From ARTICLES_VENDUS a LEFT JOIN ENCHERES e ON e.noArticle = a.noArticle INNER JOIN CATEGORIES c ON a.noCategorie = c.noCategorie LEFT JOIN UTILISATEURS u ON u.noUtilisateur = a.noVendeur  WHERE  a.noCategorie =? ORDER BY a.noArticle";
 	private static final String SELECT_TOUS_ARTICLE_ET_ENCHERES = "SELECT *\r\n" + "FROM 	ARTICLES_VENDUS a\r\n"
 			+ "LEFT JOIN ENCHERES e ON e.noArticle = a.noArticle \r\n"
 			+ "INNER JOIN CATEGORIES c ON a.noCategorie = c.noCategorie\r\n"

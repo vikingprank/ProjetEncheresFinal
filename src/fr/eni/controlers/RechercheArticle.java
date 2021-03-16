@@ -48,7 +48,7 @@ public class RechercheArticle extends HttpServlet {
 		
 		
 		
-		session.setAttribute("listeArticleRecherche", listeArticleRecherche);
+		session.setAttribute("afficherTousEtEncheres", listeArticleRecherche);
 		request.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
 		
 		
