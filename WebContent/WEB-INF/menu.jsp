@@ -1,12 +1,12 @@
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	<ul>
-		<li><a href="accueil">Accueil</a></li>
-		<li><a href="inscription">Inscription</a></li>
-		<li><a href="connexion">Connexion</a></li>
-		<li><a href="modificationProfil">Modification du Profil</a></li>
-		<li><a href="suppresionProfil">Suppresion du Profil</a></li>
-		<li><a href="ajoutArticle">Ajouter un article</a></li>
-		<li><a href="affichageArticles">Affichage des articles (pas besoin d'être connecté)</a></li>
+<nav aria-label="breadcrumb">
+	<ul class="breadcrumb">
+		<li class="breadcrumb-item active" aria-current="page"><a href="accueil">Accueil</a></li>
+		<li class="breadcrumb-item active" aria-current="page"><a href="inscription">Inscription</a></li>
+		<li class="breadcrumb-item active" aria-current="page"><a href="connexion">Connexion</a></li>
+		<li class="breadcrumb-item active" aria-current="page"><a href="modificationProfil">Modification du Profil</a></li>
+		<li class="breadcrumb-item active" aria-current="page"><a href="suppresionProfil">Suppresion du Profil</a></li>
+		<li class="breadcrumb-item active" aria-current="page"><a href="ajoutArticle">Ajouter un article</a></li>
+		<li class="breadcrumb-item active" aria-current="page"><a href="affichageArticles">Affichage des articles (pas besoin d'être connecté)</a></li>
 	</ul>
 </nav>
