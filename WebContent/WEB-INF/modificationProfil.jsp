@@ -3,10 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link type="text/css" href="bootstrap.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Modification de votre profil</title>
 </head>
-<body>
+<body class="container-fluid col-lg-10">
 <header>
 		<%@include file="menu.jsp"%>
 	</header>
