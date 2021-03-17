@@ -6,11 +6,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link type="text/css" href="bootstrap.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Connexion</title>
 </head>
-<body>
-<body>
+
+<body class="container-fluid col-lg-10">
 	<header>
 		<%@include file="menu.jsp"%>
 	</header>

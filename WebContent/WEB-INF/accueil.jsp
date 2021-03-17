@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,19 +21,7 @@
 		</c:forEach>
 	</c:if>
 
-	<c:if test="${ !empty utilisateurConnecte }">
-
-		<div class="alert alert-warning" role="alert">
-			<p>
-				<strong>Bonjour ${ utilisateurConnecte.pseudo },</strong> vous êtes
-				connecté(e)
-			</p>
-		</div>
-
-		<form action="deconnexion" method="get">
-			<input type="submit" class="btn btn-primary" value="deconnexion" />
-		</form>
-	</c:if>
+	
 <div class="container-fluid">
 	<div class="row col-lg-12" style="background-color: darkgrey">
 		<div class="row col-lg-8">
@@ -102,6 +90,8 @@
 											</c:forEach>
 										</tbody>
 									</table>
+									<form action="encherir" method="get"><button name="noArticleAEncherir" class="btn btn-primary" value="${tousarticle.noArticle}">encherir</button></form>
+
 								</div>
 							</div>
 						</div>

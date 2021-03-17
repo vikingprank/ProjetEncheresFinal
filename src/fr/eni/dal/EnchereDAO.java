@@ -16,7 +16,7 @@ public class EnchereDAO {
 		try {
 			Connection cnx = ConnectionProvider.getConnection();
 			PreparedStatement pstmt = cnx.prepareStatement(
-					"INSERT INTO ENCHERES(noUtilisateur, noArticle, dateEnchere, montantEnchere) VALUES (?,?,?,?);", PreparedStatement.RETURN_GENERATED_KEYS);
+					"INSERT INTO ENCHERES(noEnchereur, noArticle, dateEnchere, montantEnchere) VALUES (?,?,?,?);", PreparedStatement.RETURN_GENERATED_KEYS);
 			pstmt.setInt(1, enchere.getNoEnchereur());
 			pstmt.setInt(2, enchere.getNoArticle());
 			pstmt.setDate(3, Date.valueOf((enchere.getDateEnchere())));

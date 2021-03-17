@@ -3,13 +3,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link type="text/css" href="bootstrap.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Ajouter un article</title>
 </head>
-<body>
+
+<body class="container-fluid col-lg-10">
 <header>
 		<%@include file="menu.jsp"%>
 </header>
+
 <h1>Formulaire de mis en vente d'un article</h1>
 <form action="ajoutArticle" method="POST">
 
