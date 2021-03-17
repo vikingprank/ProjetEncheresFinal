@@ -34,6 +34,7 @@ public class ModificationProfil extends HttpServlet {
 		utilisateurRecupNum = (Utilisateur) request.getSession().getAttribute("utilisateurConnecte");
 		int noUtilisateur = utilisateurRecupNum.getNoUtilisateur();
 		System.out.println(noUtilisateur);
+		
 		String pseudo = request.getParameter("pseudo");
 		String nom = request.getParameter("nom");
 		String prenom = request.getParameter("prenom");
