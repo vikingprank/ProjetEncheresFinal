@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fr.eni.bll.ArticleVenduManager;
+import fr.eni.bll.UtilisateurManager;
 import fr.eni.bo.ArticleVendu;
+import fr.eni.bo.Utilisateur;
 
 /**
  * Servlet implementation class RechercheArticle
@@ -43,11 +45,11 @@ public class RechercheArticle extends HttpServlet {
 		nomArticle = request.getParameter("nomArticle");
 		noCategorie = Integer.valueOf(request.getParameter("noCategorie"));
 		ArticleVenduManager articleVenduManager = new ArticleVenduManager();
+		UtilisateurManager utilisateurManager = new UtilisateurManager();
 		ArticleVendu articleRecherche = new ArticleVendu(nomArticle, noCategorie);
 		List<ArticleVendu> listeArticleRecherche = articleVenduManager.rechercheArticle(articleRecherche);
-		
-		
-		
+		List<Utilisateur> listeUtilisateur = utilisateurManager.selectTous();
+		session.setAttribute("listeUtilisateur", listeUtilisateur);
 		session.setAttribute("afficherTousEtEncheres", listeArticleRecherche);
 		request.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
 		

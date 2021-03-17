@@ -90,13 +90,13 @@ public class UtilisateurDAO {
 	}
 
 	public List<Utilisateur> selectTous() {
+		List<Utilisateur> liste = new ArrayList<Utilisateur>();
 		try {
 			Connection cnx = ConnectionProvider.getConnection();
 			PreparedStatement pstmt = cnx.prepareStatement("SELECT * From Utilisateurs;");
 			ResultSet rs = null;
 			rs = pstmt.executeQuery();
 			Utilisateur utilisateur = null;
-			List<Utilisateur> liste = new ArrayList<Utilisateur>();
 			while (rs.next()) {
 				utilisateur = new Utilisateur(rs.getInt("noUtilisateur"), 
 						rs.getString("pseudo"), 
@@ -113,11 +113,11 @@ public class UtilisateurDAO {
 				liste.add(utilisateur);
 			}
 			cnx.close();
-			return liste;
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return liste;
 	}
 	public Utilisateur modificationUtilisateur(Utilisateur utilisateur) {
 		try {

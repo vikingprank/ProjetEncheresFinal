@@ -87,10 +87,14 @@
 										</thead>
 										<tbody>
 											<c:forEach items="${tousarticle.enchere}" var="enchere">
+											<c:forEach items="${listeUtilisateur}" var="utilisateur">
+											<c:if test="${enchere.noEnchereur == utilisateur.noUtilisateur}">
 												<tr>
-													<td>${enchere.noEnchereur}</td>
+													<td>${utilisateur.pseudo}</td>
 													<td>${enchere.montantEnchere}</td>
 												</tr>
+											</c:if>
+											</c:forEach>
 											</c:forEach>
 										</tbody>
 									</table>

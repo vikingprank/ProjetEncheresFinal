@@ -32,6 +32,11 @@ public class UtilisateurManager {
 
 	}
 
+	public List <Utilisateur> selectTous (){
+		List <Utilisateur> listeUtilisateur = DAOFactory.getUtilisateurDAO().selectTous();
+		return listeUtilisateur;
+	}
+	
 	public Utilisateur connexion(String login, String motDePasse) throws BusinessException {
 		BusinessException exception = new BusinessException();
 		Utilisateur utilisateur = DAOFactory.getUtilisateurDAO().selectByPseudoOrEmail(login);

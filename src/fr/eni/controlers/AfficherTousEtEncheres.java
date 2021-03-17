@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import fr.eni.bll.ArticleVenduManager;
+import fr.eni.bll.UtilisateurManager;
 import fr.eni.bo.ArticleVendu;
+import fr.eni.bo.Utilisateur;
 
 /**
  * Servlet implementation class AfficherTousEtEncheres
@@ -37,8 +39,11 @@ public class AfficherTousEtEncheres extends HttpServlet {
 		System.out.println("on est dans le dopost afficherTousEtEncheres");
 		HttpSession session = request.getSession();
 		ArticleVenduManager articleVenduManager = new ArticleVenduManager();
+		UtilisateurManager utilisateurManager = new UtilisateurManager();
 		List<ArticleVendu> afficherTousEtEncheres = new ArrayList<ArticleVendu>();
 		afficherTousEtEncheres = articleVenduManager.afficherTousEtEncheres();
+		List<Utilisateur> listeUtilisateur = utilisateurManager.selectTous();
+		session.setAttribute("listeUtilisateur", listeUtilisateur);
 		session.setAttribute("afficherTousEtEncheres", afficherTousEtEncheres);
 		request.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
 	}
