@@ -48,6 +48,7 @@ public class AfficherTousEtEncheres extends HttpServlet {
 		EnchereManager enchereManager = new EnchereManager();
 		List<ArticleVendu> afficherTousEtEncheres = new ArrayList<ArticleVendu>();
 		afficherTousEtEncheres = articleVenduManager.afficherTousEtEncheres();
+		//afficher que les articles "actifs"
 		afficherTousEtEncheres = articleVenduManager.articleTermine(afficherTousEtEncheres, 0);
 		List<Utilisateur> listeUtilisateur = utilisateurManager.selectTous();
 		List<Enchere> listeEnchereMax = enchereManager.enchereMax(afficherTousEtEncheres);

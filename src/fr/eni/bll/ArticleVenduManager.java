@@ -44,14 +44,18 @@ public class ArticleVenduManager {
 	
 	public List<ArticleVendu> articleTermine(List <ArticleVendu> articleEnCours, int i) {
 		 List<ArticleVendu> articleTermine = new ArrayList<ArticleVendu>();
-		for (ArticleVendu articleVendu : articleEnCours) {
+		 List<ArticleVendu> articleActifs = new ArrayList<ArticleVendu>();
+		
+		 for (ArticleVendu articleVendu : articleEnCours) {
 			if(articleVendu.getDateFinEncheres().isBefore(LocalDate.now())) {
 				articleTermine.add(articleVendu);
-				articleEnCours.remove(articleVendu);
-		}	
+		}
+			if(articleVendu.getDateFinEncheres().isAfter(LocalDate.now()) || articleVendu.getDateFinEncheres(). isEqual(LocalDate.now())) {
+				articleActifs.add(articleVendu);
+		}
 	}
 		if(i == 0)
-		return articleEnCours; 
+		return articleActifs; 
 		else
 		return articleTermine;
 	}
