@@ -24,19 +24,25 @@ public class EnchereManager {
 	}
 	
 	public List<Enchere> enchereMax(List<ArticleVendu> afficherTousEtEncheres) {
-		int enchereMax = 0;
 		Enchere objectEnchereMax = new Enchere();
 		List <Enchere> listeEnchereMax = new ArrayList<Enchere>();
 		for (ArticleVendu article : afficherTousEtEncheres) {
+			System.out.println(article);
 			List <Enchere> listEnchere = article.getEnchere();
+			System.out.println(article.getEnchere());
+			
+			int enchereMax = 0;
+			
 			for (int i = 0; i < listEnchere.size(); i++) {
 				if(listEnchere.get(i).getMontantEnchere() > enchereMax) 
 				{
 					 objectEnchereMax = listEnchere.get(i);
 					 enchereMax = listEnchere.get(i).getMontantEnchere();
 				}
+				System.out.println(objectEnchereMax);
 			}	
 			listeEnchereMax.add(objectEnchereMax);
+			System.out.println(listeEnchereMax);
 		}
 		return listeEnchereMax;
 	}

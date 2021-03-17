@@ -10,11 +10,11 @@
 	</ul>
 </nav>
 
-<c:if test="${ !empty utilisateurConnecte }">
+<c:if test="${ !empty sessionScope.utilisateurConnecte }">
 		
 	<div class="container-fluid">
 		<div class="row col-lg-12">
-			<div class="alert alert-warning" role="alert">
+			<div class="alert alert-success" role="alert">
 				<div class="col" >
 				<p>
 					<strong>Bonjour ${ utilisateurConnecte.pseudo },</strong> vous êtes
@@ -29,4 +29,19 @@
 			</div>
 		</div>
 	</div>
-	</c:if>
+</c:if>
+<c:if test="${ empty sessionScope.utilisateurConnecte }">
+		
+	<div class="container-fluid">
+		<div class="row col-lg-12">
+			<div class="alert alert-danger" role="alert">
+				<div class="col" >
+				<p>
+					<strong>Bonjour,</strong> vous n'êtes pas
+					connecté(e)
+				</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</c:if>
