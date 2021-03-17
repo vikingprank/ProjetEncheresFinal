@@ -83,10 +83,6 @@
 												</tr>
 											</c:if>
 											</c:forEach>
-											<form action="encherir" method="get">
-										<input type="submit" class="btn btn-primary" name ="noArticleAEncherir"
-										value="Encherir"/>
-										</form>	
 											</c:forEach>
 										</tbody>
 									</table>
