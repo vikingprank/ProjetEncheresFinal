@@ -74,14 +74,18 @@
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach items="${tousarticle.enchere}" var="enchere">
+											<c:forEach items="${tousarticle.enchere}" var="enchere" varStatus="index">
 											<c:forEach items="${listeUtilisateur}" var="utilisateur">
-											<c:if test="${enchere.noEnchereur == utilisateur.noUtilisateur}">
+											<c:forEach items="${listeEnchereMax}" var="enchereMax">
+											
+											<c:if test="${enchereMax.noArticle == enchere.noArticle && enchereMax.noEnchereur == utilisateur.noUtilisateur && enchereMax.montantEnchere == enchere.montantEnchere}">
 												<tr>
 													<td>${utilisateur.pseudo}</td>
-													<td>${enchere.montantEnchere}</td>
+													<td>${enchereMax.montantEnchere}</td>
 												</tr>
+										
 											</c:if>
+											</c:forEach>
 											</c:forEach>
 											</c:forEach>
 										</tbody>
