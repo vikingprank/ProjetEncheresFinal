@@ -26,5 +26,9 @@ public abstract class CodesErreurBLL {
 	
 	public static final int ARTICLES_EN_VENTE=30003;
 	
+	public static final int RULE_MONTANT_ENCHERE=40001;
+	
+	
+	
 	
 }

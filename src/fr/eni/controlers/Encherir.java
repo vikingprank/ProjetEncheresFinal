@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import fr.eni.bll.EnchereManager;
 import fr.eni.bo.Enchere;
 import fr.eni.bo.Utilisateur;
+import fr.eni.dal.DAOFactory;
+import fr.eni.dal.EnchereDAO;
 
 /**
  * Servlet implementation class Encherir
@@ -69,17 +71,24 @@ public class Encherir extends HttpServlet {
 		int montantEnchere = Integer.valueOf(request.getParameter("montantEnchere"));
 		System.out.println(montantEnchere);
 		
+		EnchereDAO enchereDAO = new EnchereDAO();
+		int montantEnchereMax = enchereDAO.selectByNoEnchere(noArticle);
+		System.out.println(montantEnchereMax);
+		request.getSession().setAttribute("montantEnchereMax", montantEnchereMax);
+		
 		EnchereManager enchereManager = new EnchereManager();
 		Enchere enchere = new Enchere();
 		
-		enchere = enchereManager.insertEnchere(noUtilisateur, noArticle, dateEnchere, montantEnchere);
+		
+		try {
+			enchere = enchereManager.insertEnchere(noUtilisateur, noArticle, dateEnchere, montantEnchere);
+			request.getSession().setAttribute("enchere", enchere);
+			request.getServletContext().getRequestDispatcher("/WEB-INF/succesEnchere.jsp").forward(request, response);
+		} catch (BusinessException e) {
+			request.setAttribute("listeCodesErreur", e.getListeCodesErreur());
+			request.getServletContext().getRequestDispatcher("/WEB-INF/encherir.jsp").forward(request, response);
+		}
 		System.out.println("L'enchère rentrée en base de données : " + enchere);
-		
-		//mettre en session l'enchère
-		request.getSession().setAttribute("enchere", enchere);
-		//redirection à la page des articles
-		request.getServletContext().getRequestDispatcher("/WEB-INF/succesEnchere.jsp").forward(request, response);
-		
 		
 	}
 

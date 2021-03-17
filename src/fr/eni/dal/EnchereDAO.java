@@ -8,9 +8,10 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 import fr.eni.bo.Enchere;
+import fr.eni.bo.Utilisateur;
 
 public class EnchereDAO {
-
+	public static final String SELECT_BY_NO_ENCHERE = "SELECT MAX(montantEnchere) as montantEnchereMax  FROM ENCHERES WHERE noArticle=?";
 	public int insertEnchere(Enchere enchere) {
 
 		try {
@@ -37,6 +38,24 @@ public class EnchereDAO {
 
 		return 0;
 
+	}
+	
+	public int selectByNoEnchere(int NoArticle) {
+		Enchere enchere = new Enchere();
+		int montantEnchereMax = 0;
+			try {
+			Connection cnx = ConnectionProvider.getConnection();
+			PreparedStatement pstmt = cnx.prepareStatement(SELECT_BY_NO_ENCHERE);
+			pstmt.setInt(1, NoArticle);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next())
+				enchere.setMontantEnchere(rs.getInt("montantEnchereMax"));
+			montantEnchereMax = enchere.getMontantEnchere();
+			cnx.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return montantEnchereMax;
 	}
 
 }

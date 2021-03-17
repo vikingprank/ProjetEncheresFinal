@@ -6,23 +6,44 @@ import java.util.List;
 
 import fr.eni.bo.ArticleVendu;
 import fr.eni.bo.Enchere;
+import fr.eni.controlers.BusinessException;
 import fr.eni.dal.EnchereDAO;
 
 
 public class EnchereManager {
 
-	public Enchere insertEnchere(int noUtilisateur, int noArticle, LocalDate dateEnchere, int montantEnchere) {
+
+	public Enchere insertEnchere(int noUtilisateur, int noArticle, LocalDate dateEnchere, int montantEnchere) throws BusinessException {
 		
 		Enchere enchere = new Enchere(noUtilisateur, noArticle, dateEnchere, montantEnchere);
-		
+		BusinessException exception = new BusinessException();
 		EnchereDAO enchereDAO = new EnchereDAO();
-		int noEnchere = enchereDAO.insertEnchere(enchere);
-		
+		int enchereMax = validerEnchere(enchere, exception);
+		int noEnchere = 0;
+		if(!exception.hasErreurs())
+		{
+			noEnchere = enchereDAO.insertEnchere(enchere);
+		}
 		Enchere enchereAvecNoEnchere = new Enchere(noEnchere, noUtilisateur, noArticle, dateEnchere, montantEnchere);
 		
+		if (exception.hasErreurs()) {
+			enchereAvecNoEnchere.setMontantEnchere(enchereMax);
+			throw exception;
+		}
+		
 		return enchereAvecNoEnchere;
+		
 	}
 	
+	private int validerEnchere(Enchere enchere, BusinessException exception) {
+		EnchereDAO enchereDAO = new EnchereDAO();
+		if(enchere.getMontantEnchere() < enchereDAO.selectByNoEnchere(enchere.getNoArticle()))
+		{
+			exception.ajouterErreur(CodesErreurBLL.RULE_MONTANT_ENCHERE);
+		}
+		return enchereDAO.selectByNoEnchere(enchere.getNoArticle());
+	}
+
 	public List<Enchere> enchereMax(List<ArticleVendu> afficherTousEtEncheres) {
 		Enchere objectEnchereMax = new Enchere();
 		List <Enchere> listeEnchereMax = new ArrayList<Enchere>();
