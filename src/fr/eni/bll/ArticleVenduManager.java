@@ -36,16 +36,6 @@ public class ArticleVenduManager {
 		return listeArticleRecherche;
 	}
 
-//
-//	public List<ArticleVendu> afficherTous() {
-//		ArticleVenduDAO articleVenduDAO = new ArticleVenduDAO();
-//		List<ArticleVendu> listeArticles = new ArrayList<ArticleVendu>();
-//
-//		listeArticles = articleVenduDAO.afficherTous();
-//		
-//		return listeArticles;
-//
-//	}
 	public List<ArticleVendu> afficherTousEtEncheres() {
 		ArticleVenduDAO articleVenduDAO = new ArticleVenduDAO();
 		return articleVenduDAO.afficherTousEtEncheres();
