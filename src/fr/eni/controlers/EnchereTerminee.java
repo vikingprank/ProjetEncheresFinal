@@ -57,6 +57,14 @@ public class EnchereTerminee extends HttpServlet {
 		session.setAttribute("listeUtilisateur", listeUtilisateur);
 		session.setAttribute("afficherTousEtEncheresTerminees", afficherTousEtEncheresTerminees);
 		
+		//affichage du lieu de retrait pour le gagant de l'enchère
+		
+		RetraitManager retraitManager = new RetraitManager();
+		List<Retrait> listeRetrait = new ArrayList<>();
+		listeRetrait = retraitManager.selectTousRetraits();
+		System.out.println(listeRetrait);
+		session.setAttribute("listeRetrait", listeRetrait);
+		
 		
 		request.getServletContext().getRequestDispatcher("/WEB-INF/enchereTerminee.jsp").forward(request, response);
 	}
@@ -75,6 +83,7 @@ public class EnchereTerminee extends HttpServlet {
 		RetraitManager retraitManager = new RetraitManager();
 		Retrait retrait = new Retrait();
 		retrait = retraitManager.insertRetrait(noArticleRetrait, rue, codePostal, ville);
+		
 		
 		request.getServletContext().getRequestDispatcher("/WEB-INF/enchereTerminee.jsp").forward(request, response);
 

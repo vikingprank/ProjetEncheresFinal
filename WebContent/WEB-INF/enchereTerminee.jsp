@@ -52,9 +52,8 @@
 										
 											</c:if>
 											</c:forEach>
-											</c:forEach>
-										</tbody>
-									</table>
+											</tbody>
+											</table>
 											
 											
 											<c:if test="${sessionScope.utilisateurConnecte.pseudo == tousarticle.utilisateur.pseudo}">
@@ -77,7 +76,25 @@
 											</form>
 											
 											</c:if>
-											<c:if test="${sessionScope.utilisateurConnecte.pseudo == utilisateur.pseudo}"><p>Voici le point de retrait</p></c:if>
+											
+											<c:if test="${sessionScope.utilisateurConnecte.pseudo == utilisateur.pseudo}">
+											
+											<p>Voici le point de retrait :</p>
+											
+											<c:forEach items="${sessionScope.listeRetrait}" var="listeRetrait">
+											
+											<c:if test="${tousarticle.noArticle == listeRetrait.noArticle }">
+											
+											<p>Rue : ${listeRetrait.rue }</p>
+											<p>Code Postale : ${listeRetrait.codePostal }</p>
+											<p>Ville : ${listeRetrait.ville }</p>
+											</c:if>
+											</c:forEach>
+											
+											</c:if>
+											</c:forEach>
+											
+											
 									</c:forEach>
 								</div>
 							</div>

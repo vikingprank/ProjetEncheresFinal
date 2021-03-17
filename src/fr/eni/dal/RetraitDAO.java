@@ -2,7 +2,10 @@ package fr.eni.dal;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import fr.eni.bo.Retrait;
 
@@ -26,5 +29,31 @@ public class RetraitDAO {
 			e.printStackTrace();
 		}
 
+	}
+
+	public List<Retrait> selectTous() {
+		try {
+			List <Retrait> liste = new ArrayList<>();
+			Connection cnx = ConnectionProvider.getConnection();
+			PreparedStatement pstmt = cnx.prepareStatement("SELECT * From RETRAITS;");
+			ResultSet rs = null;
+			rs = pstmt.executeQuery();
+			Retrait retrait = null;
+			while (rs.next()) {
+				retrait = new Retrait(rs.getInt("noArticle"),
+						rs.getString("rue"),
+						rs.getString("codePostal"),
+						rs.getString("ville")
+						);
+				liste.add(retrait);
+			}
+			cnx.close();
+			return liste;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+		
 	}
 }
