@@ -1,5 +1,6 @@
 package fr.eni.bll;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,4 +41,19 @@ public class ArticleVenduManager {
 		ArticleVenduDAO articleVenduDAO = new ArticleVenduDAO();
 		return articleVenduDAO.afficherTousEtEncheres();
 	}
+	
+	public List<ArticleVendu> articleTermine(List <ArticleVendu> articleEnCours, int i) {
+		 List<ArticleVendu> articleTermine = new ArrayList<ArticleVendu>();
+		for (ArticleVendu articleVendu : articleEnCours) {
+			if(articleVendu.getDateFinEncheres().isBefore(LocalDate.now())) {
+				articleTermine.add(articleVendu);
+				articleEnCours.remove(articleVendu);
+		}	
+	}
+		if(i == 0)
+		return articleEnCours; 
+		else
+		return articleTermine;
+	}
 }
+

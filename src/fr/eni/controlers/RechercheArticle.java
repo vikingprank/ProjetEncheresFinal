@@ -51,6 +51,7 @@ public class RechercheArticle extends HttpServlet {
 		EnchereManager enchereManager = new EnchereManager();
 		ArticleVendu articleRecherche = new ArticleVendu(nomArticle, noCategorie);
 		List<ArticleVendu> listeArticleRecherche = articleVenduManager.rechercheArticle(articleRecherche);
+		listeArticleRecherche = articleVenduManager.articleTermine(listeArticleRecherche, 0);
 		List<Utilisateur> listeUtilisateur = utilisateurManager.selectTous();
 		List<Enchere> listeEnchereMax = enchereManager.enchereMax(listeArticleRecherche);
 		session.setAttribute("listeEnchereMax", listeEnchereMax);

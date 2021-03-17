@@ -46,5 +46,4 @@ public class EnchereManager {
 		}
 		return listeEnchereMax;
 	}
-
 }

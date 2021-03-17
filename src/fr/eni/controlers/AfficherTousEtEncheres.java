@@ -48,9 +48,10 @@ public class AfficherTousEtEncheres extends HttpServlet {
 		EnchereManager enchereManager = new EnchereManager();
 		List<ArticleVendu> afficherTousEtEncheres = new ArrayList<ArticleVendu>();
 		afficherTousEtEncheres = articleVenduManager.afficherTousEtEncheres();
+		afficherTousEtEncheres = articleVenduManager.articleTermine(afficherTousEtEncheres, 0);
 		List<Utilisateur> listeUtilisateur = utilisateurManager.selectTous();
-		
 		List<Enchere> listeEnchereMax = enchereManager.enchereMax(afficherTousEtEncheres);
+		
 		System.out.println(listeEnchereMax);
 		session.setAttribute("listeEnchereMax", listeEnchereMax);
 		session.setAttribute("listeUtilisateur", listeUtilisateur);
