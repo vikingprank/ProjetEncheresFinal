@@ -7,6 +7,7 @@
 		<li class="breadcrumb-item active" aria-current="page"><a href="modificationProfil">Modification du Profil</a></li>
 		<li class="breadcrumb-item active" aria-current="page"><a href="suppresionProfil">Suppresion du Profil</a></li>
 		<li class="breadcrumb-item active" aria-current="page"><a href="ajoutArticle">Ajouter un article</a></li>
+		<li class="breadcrumb-item active" aria-current="page"><a href="enchereTerminee">Consulter les enchères terminées</a></li>
 	</ul>
 </nav>
 
