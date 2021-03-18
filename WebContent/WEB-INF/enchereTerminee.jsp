@@ -42,19 +42,23 @@
 										<tbody>
 											<c:forEach items="${tousarticle.enchere}" var="enchere" varStatus="index">
 											<c:forEach items="${listeUtilisateur}" var="utilisateur">
-											<c:forEach items="${listeEnchereMax}" var="enchereMax">
-											
+											<c:forEach items="${listeEnchereMaxArticleTermine}" var="enchereMax">
 											<c:if test="${enchereMax.noArticle == enchere.noArticle && enchereMax.noEnchereur == utilisateur.noUtilisateur && enchereMax.montantEnchere == enchere.montantEnchere}">
 												<tr>
 													<td>${utilisateur.pseudo}</td>
 													<td>${enchereMax.montantEnchere}</td>
 												</tr>
-										
+												
 											</c:if>
 											</c:forEach>
-											</tbody>
-											</table>
-											
+											</c:forEach>
+											</c:forEach>
+										</tbody>
+									</table>
+										<c:forEach items="${tousarticle.enchere}" var="enchere" varStatus="index">
+											<c:forEach items="${listeUtilisateur}" var="utilisateur">
+											<c:forEach items="${listeEnchereMaxArticleTermine}" var="enchereMax">
+											<c:if test="${enchereMax.noArticle == enchere.noArticle && enchereMax.noEnchereur == utilisateur.noUtilisateur && enchereMax.montantEnchere == enchere.montantEnchere}">
 											
 											<c:if test="${sessionScope.utilisateurConnecte.pseudo == tousarticle.utilisateur.pseudo}">
 											<p>Rentrez le point de retrait :</p>
@@ -74,6 +78,7 @@
 										    <button name="noArticleRetrait" class="btn btn-primary" value="${tousarticle.noArticle}">Definir comme point de retrait</button>
 										    
 											</form>
+											</c:if>
 											
 											</c:if>
 											
@@ -91,11 +96,16 @@
 											</c:if>
 											</c:forEach>
 											
+											
+											
 											</c:if>
+												
+											
 											</c:forEach>
-											
-											
-									</c:forEach>
+											</c:forEach>
+											</c:forEach>
+									
+									
 								</div>
 							</div>
 						</div>
@@ -104,5 +114,6 @@
 				</c:forEach>
 			</div>
 		</div>
+
 </body>
 </html>
