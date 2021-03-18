@@ -83,7 +83,7 @@ public class ArticleVenduDAO {
 				Categorie categorie = new Categorie(rs.getInt("noCategorie"), rs.getString("libelle"));
 
 				ArticleVendu articleVendu = new ArticleVendu(rs.getInt("noArticle"), rs.getString("nomArticle"),
-						rs.getString("description"), rs.getDate("dateDebutEncheres").toLocalDate(),
+						rs.getString("description"), rs.getInt("noVendeur"), rs.getDate("dateDebutEncheres").toLocalDate(),
 						rs.getDate("dateFinEncheres").toLocalDate(), rs.getInt("prixInitial"), rs.getInt("prixVente"),
 						categorie, utilisateur);
 
@@ -134,8 +134,8 @@ public class ArticleVenduDAO {
 
 				Categorie categorie = new Categorie(rs.getInt("noCategorie"), rs.getString("libelle"));
 
-				ArticleVendu articleVendu = new ArticleVendu(rs.getInt("noArticle"), rs.getString("nomArticle"),
-						rs.getString("description"), rs.getDate("dateDebutEncheres").toLocalDate(),
+				ArticleVendu articleVendu = new ArticleVendu(rs.getInt("noArticle"), rs.getString("nomArticle"), 
+						rs.getString("description"), rs.getInt("noVendeur"), rs.getDate("dateDebutEncheres").toLocalDate(),
 						rs.getDate("dateFinEncheres").toLocalDate(), rs.getInt("prixInitial"), rs.getInt("prixVente"),
 						categorie, utilisateur);
 

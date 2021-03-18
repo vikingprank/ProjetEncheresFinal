@@ -25,9 +25,10 @@ public class ArticleVendu {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
+	public ArticleVendu(int noArticle, String nomArticle, String description, int noVendeur, LocalDate dateDebutEncheres,
 			LocalDate dateFinEncheres, int prixInitial, int prixVente, Categorie categorie, Utilisateur utilisateur) {
 		super();
+		this.noVendeur = noVendeur;
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
 		this.description = description;
@@ -51,13 +52,15 @@ public class ArticleVendu {
 	 * @param utilisateur
 	 * @param enchere
 	 */
-	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
+	public ArticleVendu(int noArticle, String nomArticle, String description, int noVendeur, LocalDate dateDebutEncheres,
 			LocalDate dateFinEncheres, int prixInitial, int prixVente, Categorie categorie, Utilisateur utilisateur,
 			List<Enchere> enchere) {
 		super();
+		
 		this.noArticle = noArticle;
 		this.nomArticle = nomArticle;
 		this.description = description;
+		this.noVendeur = noVendeur;
 		this.dateDebutEncheres = dateDebutEncheres;
 		this.dateFinEncheres = dateFinEncheres;
 		this.prixInitial = prixInitial;

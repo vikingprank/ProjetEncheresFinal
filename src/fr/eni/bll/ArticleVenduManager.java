@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.bo.ArticleVendu;
+import fr.eni.bo.Utilisateur;
 import fr.eni.dal.ArticleVenduDAO;
 
 public class ArticleVenduManager {
@@ -58,6 +59,17 @@ public class ArticleVenduManager {
 		return articleActifs; 
 		else
 		return articleTermine;
+	}
+	
+	public List<ArticleVendu> articleTermineVendeur(List <ArticleVendu> tousLesArticlesVendus, Utilisateur utilisateur){
+		 List<ArticleVendu> articleTermine = new ArrayList<ArticleVendu>();
+		for (ArticleVendu articleVendu : tousLesArticlesVendus) {
+			if(articleVendu.getNoVendeur() == utilisateur.getNoUtilisateur())
+				articleTermine.add(articleVendu);
+		}
+		
+		return articleTermine;
+		
 	}
 }
 

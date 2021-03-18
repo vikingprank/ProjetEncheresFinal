@@ -23,14 +23,14 @@ import fr.eni.bo.Utilisateur;
 /**
  * Servlet implementation class EnchereTerminee
  */
-@WebServlet("/enchereTerminee")
-public class EnchereTerminee extends HttpServlet {
+@WebServlet("/enchereTermineeVendeur")
+public class EnchereTermineeVendeur extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EnchereTerminee() {
+    public EnchereTermineeVendeur() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -61,10 +61,10 @@ public class EnchereTerminee extends HttpServlet {
 		
 		System.out.println(utilisateurConnecte);
 		session.setAttribute("listeEnchereMaxArticleTermine", listeEnchereMaxArticleTermine);
-		session.setAttribute("listeEnchereMax", listeEnchereMax);
+		
 		session.setAttribute("listeArticleTermine", articleTermine);
 		session.setAttribute("listeUtilisateur", listeUtilisateur);
-		session.setAttribute("afficherTousEtEncheresTerminees", afficherTousEtEncheresTerminees);
+		
 		
 		//affichage du lieu de retrait pour le gagant de l'enchère
 		
@@ -75,7 +75,7 @@ public class EnchereTerminee extends HttpServlet {
 		session.setAttribute("listeRetrait", listeRetrait);
 		
 		
-		request.getServletContext().getRequestDispatcher("/WEB-INF/enchereTerminee.jsp").forward(request, response);
+		request.getServletContext().getRequestDispatcher("/WEB-INF/enchereTermineeVendeur.jsp").forward(request, response);
 	}
 
 	/**

@@ -60,10 +60,10 @@ public class EnchereManager {
 					 objectEnchereMax = listEnchere.get(i);
 					 enchereMax = listEnchere.get(i).getMontantEnchere();
 				}
-				System.out.println(objectEnchereMax);
+			
 			}	
 			listeEnchereMax.add(objectEnchereMax);
-			System.out.println(listeEnchereMax);
+			
 		}
 		return listeEnchereMax;
 	}
