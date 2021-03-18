@@ -42,7 +42,7 @@
 										<tbody>
 											<c:forEach items="${tousarticle.enchere}" var="enchere" varStatus="index">
 											<c:forEach items="${listeUtilisateur}" var="utilisateur">
-											<c:forEach items="${listeEnchereMaxArticleTermine}" var="enchereMax">
+											<c:forEach items="${listeEnchereMax}" var="enchereMax">
 											<c:if test="${enchereMax.noArticle == enchere.noArticle && enchereMax.noEnchereur == utilisateur.noUtilisateur && enchereMax.montantEnchere == enchere.montantEnchere}">
 												<tr>
 													<td>${utilisateur.pseudo}</td>
@@ -57,7 +57,7 @@
 									</table>
 										<c:forEach items="${tousarticle.enchere}" var="enchere" varStatus="index">
 											<c:forEach items="${listeUtilisateur}" var="utilisateur">
-											<c:forEach items="${listeEnchereMaxArticleTermine}" var="enchereMax">
+											<c:forEach items="${listeEnchereMax}" var="enchereMax">
 											<c:if test="${enchereMax.noArticle == enchere.noArticle && enchereMax.noEnchereur == utilisateur.noUtilisateur && enchereMax.montantEnchere == enchere.montantEnchere}">
 											
 											<c:if test="${sessionScope.utilisateurConnecte.pseudo == tousarticle.utilisateur.pseudo}">
@@ -74,38 +74,37 @@
 										    <label for="ville">Ville :</label>
 										    <input type="text" id="ville" name="ville" value="${utilisateurConnecte.ville}"><br>
 										    
-										    
 										    <button name="noArticleRetrait" class="btn btn-primary" value="${tousarticle.noArticle}">Definir comme point de retrait</button>
-										    
 											</form>
 											</c:if>
-											
-											</c:if>
-											
-											<c:if test="${sessionScope.utilisateurConnecte.pseudo == utilisateur.pseudo}">
-											
-											<p>Voici le point de retrait :</p>
-											
-											<c:forEach items="${sessionScope.listeRetrait}" var="listeRetrait">
-											
-											<c:if test="${tousarticle.noArticle == listeRetrait.noArticle }">
-											
-											<p>Rue : ${listeRetrait.rue }</p>
-											<p>Code Postale : ${listeRetrait.codePostal }</p>
-											<p>Ville : ${listeRetrait.ville }</p>
 											</c:if>
 											</c:forEach>
+											</c:forEach>
+											</c:forEach>
 											
+											<c:forEach items="${tousarticle.enchere}" var="enchere" varStatus="index">
+											<c:forEach items="${listeUtilisateur}" var="utilisateur">
+											<c:forEach items="${listeEnchereMax}" var="enchereMax">
+											<c:if test="${enchereMax.noArticle == enchere.noArticle && enchereMax.noEnchereur == utilisateur.noUtilisateur && enchereMax.montantEnchere == enchere.montantEnchere}">
 											
-											
-											</c:if>
-												
-											
+
+                                            <p>Voici le point de retrait :</p>
+
+                                            <c:forEach items="${sessionScope.listeRetrait}" var="listeRetrait">
+
+                                            <c:if test="${tousarticle.noArticle == listeRetrait.noArticle }">
+
+                                            <p>Rue : ${listeRetrait.rue }</p>
+                                            <p>Code Postale : ${listeRetrait.codePostal }</p>
+                                            <p>Ville : ${listeRetrait.ville }</p>
+                                            </c:if>
+                                            </c:forEach>
+
+                                            </c:if>
+                                           
 											</c:forEach>
 											</c:forEach>
 											</c:forEach>
-									
-									
 								</div>
 							</div>
 						</div>

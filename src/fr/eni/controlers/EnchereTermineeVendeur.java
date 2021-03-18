@@ -49,16 +49,16 @@ public class EnchereTermineeVendeur extends HttpServlet {
 		List<ArticleVendu> afficherTousEtEncheresTerminees = new ArrayList<ArticleVendu>();
 		List<ArticleVendu> articleTermine = new ArrayList<ArticleVendu>();
 		afficherTousEtEncheres = articleVenduManager.afficherTousEtEncheres();
-		afficherTousEtEncheresTerminees = articleVenduManager.articleTermine(afficherTousEtEncheres, 1);
 		List<Utilisateur> listeUtilisateur = utilisateurManager.selectTous();
+		afficherTousEtEncheresTerminees = articleVenduManager.articleTermine(afficherTousEtEncheres, 1);
 		List<Enchere> listeEnchereMax = enchereManager.enchereMax(afficherTousEtEncheres);
-		//selection les articles vendu par l'utilisateur connectï¿½
+		//selection les articles vendu par l'utilisateur connecté
 		Utilisateur utilisateurConnecte = (Utilisateur) session.getAttribute("utilisateurConnecte");
-		articleTermine = articleVenduManager.articleTermineVendeur(afficherTousEtEncheresTerminees, utilisateurConnecte);
+		articleTermine = articleVenduManager.articleTermineVendeur(afficherTousEtEncheres, utilisateurConnecte);
 		List<Enchere> listeEnchereMaxArticleTermine = enchereManager.enchereMax(articleTermine);
+		
 		System.out.println("enchere" + listeEnchereMaxArticleTermine);
 		System.out.println(articleTermine);
-		
 		System.out.println(utilisateurConnecte);
 		session.setAttribute("listeEnchereMaxArticleTermine", listeEnchereMaxArticleTermine);
 		
